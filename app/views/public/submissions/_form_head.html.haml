@@ -1,0 +1,18 @@
+
+.grid-x.grid-padding-x.align-center
+  .large-10.large-offset-1.medium-12.cell.float-right
+    %img.float-right(src="/assets/3px_ut_76_remembrance_draft_header.jpg" width="800px")
+.grid-x.grid-padding-x
+  .large-10.large-offset-1.medium-12.cell
+    %h1 
+      = @map.title
+    %h2
+      = @map.subtitle
+%hr      
+.grid-x.grid-padding-x
+  .large-10.large-offset-1.medium-12.cell
+    - [{name: 'english', code: 'en'}, {name: 'deutsch', code: 'de'}, {name: 'francais', code: 'fr'}].each do |language|
+      = link_to language[:name], current_page_params.merge(layer_id: params[:layer_id], locale: language[:code])
+.grid-x.grid-padding-x
+  .large-10.large-offset-1.medium-12.cell
+    != @map.text

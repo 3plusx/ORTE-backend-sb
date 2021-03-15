@@ -87,10 +87,11 @@ class Public::SubmissionsController < ApplicationController
     @submission = Submission.find(submission_from_id)
     @image = Image.new(image_params)
     @layer = Layer.find(layer_from_id)
-    # @place = Place.find(place_from_id)
+    @map = @layer.map
+    @place = Place.find(place_from_id)
     respond_to do |format|
       if @image.save
-        format.html { redirect_to submission_finished_path(@image.place.layer.map, @image.place.layer, @image.place), notice: 'Image was successfully uploaded.' }
+        format.html { redirect_to submission_finished_path(locale: 'de', place_id: @place.id, submission_id: @submission.id, layer_id: layer_from_id), notice: 'Your contribution has been saved' }
         format.json { render :show, status: :created, location: @image }
       else
         format.html { render :new_image }
@@ -99,7 +100,7 @@ class Public::SubmissionsController < ApplicationController
     end
   end
 
-  def finish_submission; end
+  def finished; end
 
 
   def layer_from_id
@@ -107,11 +108,12 @@ class Public::SubmissionsController < ApplicationController
   end
 
   def place_from_id
-    params[:place_id].to_i
+    return params[:place_id].to_i unless params[:place_id].nil?
+    return params[:image_place_id].to_i unless params[:image_place_id].nil?
+    0
   end
 
   def submission_from_id
-    print('submission_id: ' + params[:submission_id])
     params[:submission_id].to_i
   end
 
