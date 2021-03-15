@@ -30,11 +30,7 @@
           = f.input :privacy, as: 'boolean', :label => t('simple_form.labels.privacy')
     
     .large-6.medium-12.cell      
-      %p
-        Vorschau des Beitrages
-      .callout
-        %h3
-          Name des Submitters
+      = render 'form_preview'
   %hr
   .grid-x
     .large-6.medium-6.small-12.cell

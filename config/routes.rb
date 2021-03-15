@@ -52,7 +52,7 @@ Rails.application.routes.draw do
       post :create_place, :controller => "public/submissions", :action => 'create_place'
       get :new_image, :controller => "public/submissions", :action => 'new_image'
       post :create_image, :controller => "public/submissions", :action => 'create_image'
-      get :finished, :controller => "public/submissions", :action => 'finish_submission'
+      get :finished, :controller => "public/submissions", :action => 'finished'
 
     end
   end

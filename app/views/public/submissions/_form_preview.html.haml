@@ -1,0 +1,15 @@
+%p
+  = t('simple_form.preview.intro')
+.callout
+  %h3(id='submission_name_receiver')
+    = @submission.name || t('simple_form.placeholders.title')
+  %h4(id='place_location_receiver')
+    - if @place && @place.location
+      = @place.location 
+    - else 
+      = t('simple_form.placeholders.location')
+  %p(id='place_teaser_receiver')
+    - if @place && @place.teaser
+      != @place.teaser 
+    - else 
+      = t('simple_form.placeholders.teaser')

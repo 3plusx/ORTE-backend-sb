@@ -5,9 +5,7 @@
 .grid-x.grid-padding-x
   .large-10.large-offset-1.medium-12.cell
     %h1 
-      = @map.title
-    %h2
-      = @map.subtitle
+      = t('simple_form.form_intro.title')
 %hr      
 .grid-x.grid-padding-x
   .large-10.large-offset-1.medium-12.cell
@@ -15,4 +13,5 @@
       = link_to language[:name], current_page_params.merge(layer_id: params[:layer_id], locale: language[:code])
 .grid-x.grid-padding-x
   .large-10.large-offset-1.medium-12.cell
-    != @map.text
+    = t('simple_form.form_intro.text')
+%hr          

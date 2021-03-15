@@ -4,7 +4,6 @@
   .grid-x
     .large-12.cell
       = f.error_notification
-      = @image.errors.inspect
 
              
   .grid-x.grid-padding-x
@@ -23,11 +22,7 @@
 
      
     .large-6.medium-12.cell      
-      %p
-        Vorschau des Beitrages
-      .callout
-        %h3
-          Name des Submitters          
+      = render 'form_preview'     
   
     
 

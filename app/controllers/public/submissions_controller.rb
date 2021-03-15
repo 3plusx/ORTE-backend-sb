@@ -100,7 +100,15 @@ class Public::SubmissionsController < ApplicationController
     end
   end
 
-  def finished; end
+  def finished
+    @submission = Submission.find(submission_from_id)
+
+    print @submission.inspect
+    @image = Image.sorted_by_place(place_from_id)
+    @layer = Layer.find(layer_from_id)
+    @map = @layer.map
+    @place = Place.find(place_from_id)
+  end
 
 
   def layer_from_id
