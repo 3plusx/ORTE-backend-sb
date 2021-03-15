@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SubmissionsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index new create show new_place create_place new_image create_image]
+  skip_before_action :authenticate_user!, only: %i[new create new_place create_place new_image create_image]
   layout 'submission'
   def new
     return unless layer_from_id.positive?
@@ -65,7 +65,7 @@ class Public::SubmissionsController < ApplicationController
     respond_to do |format|
       if @place.save
         # @submission.save!
-        format.html { redirect_to submission_new_image_path(locale: 'de', place_id: @place.id, submission_id: @submission.id, layer_id: layer_from_id), notice: 'Submission was successfully created.' }
+        format.html { redirect_to submission_new_image_path(locale: 'de', place_id: @place.id, submission_id: @submission.id, layer_id: layer_from_id), notice: 'Place was successfully created.' }
         format.json { render :show, status: :created, location: @place }
       else
         format.html { render :new_place }
@@ -90,10 +90,10 @@ class Public::SubmissionsController < ApplicationController
     # @place = Place.find(place_from_id)
     respond_to do |format|
       if @image.save
-        format.html { redirect_to submission_finished_path(@image.place.layer.map, @image.place.layer, @image.place), notice: 'Image was successfully created.' }
+        format.html { redirect_to submission_finished_path(@image.place.layer.map, @image.place.layer, @image.place), notice: 'Image was successfully uploaded.' }
         format.json { render :show, status: :created, location: @image }
       else
-        format.html { render :new }
+        format.html { render :new_image }
         format.json { render json: @image.errors, status: :unprocessable_entity }
       end
     end
@@ -101,9 +101,6 @@ class Public::SubmissionsController < ApplicationController
 
   def finish_submission; end
 
-  def show; end
-
-  def index; end
 
   def layer_from_id
     params[:layer_id].to_i
@@ -114,6 +111,7 @@ class Public::SubmissionsController < ApplicationController
   end
 
   def submission_from_id
+    print('submission_id: ' + params[:submission_id])
     params[:submission_id].to_i
   end
 

@@ -20,7 +20,6 @@
       .grid-x.grid-padding-x
         .large-8.large-offset-2.medium-12.cell
           = f.error_notification
-          = @submission.errors.inspect
           - if @submission.errors.full_messages.present?
             %ul.hide
               = @submission.errors.full_messages.each do |item,msg|
