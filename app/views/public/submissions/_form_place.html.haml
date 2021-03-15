@@ -1,0 +1,60 @@
+= simple_form_for [@map, @submission, @place], :method => 'POST',:url => '/' + params[:locale] + '/submissions/'+@submission.id.to_s+'/create_place?layer_id=1' do |f|
+  = f.input :layer_id, :as => :hidden, :input_html => { :value => @layer.id }
+  .grid-x.grid-padding-x
+    .large-10.large-offset-1.medium-12.cell
+      %h1 
+        = @map.title
+      %h2
+        = @map.subtitle
+  .grid-x.grid-padding-x
+    .large-10.large-offset-1.medium-12.cell
+      - [{name: 'english', code: 'en'}, {name: 'deutsch', code: 'de'}, {name: 'francais', code: 'fr'}].each do |language|
+        = link_to language[:name], current_page_params.merge(layer_id: params[:layer_id], locale: language[:code])
+
+          
+  .grid-x.grid-padding-x
+    .large-10.large-offset-1.medium-12.cell
+      != @map.text
+ 
+  .grid-x.grid-padding-x
+    .large-6.medium-12.cell
+
+      .grid-x.grid-padding-x
+        .large-8.large-offset-2.medium-12.cell
+          = f.error_notification
+          = @place.errors.inspect
+          - if @place.errors.full_messages.present?
+            %ul.hide
+              = @place.errors.full_messages.each do |item,msg|
+                %li= item
+            = f.input :title, :label => t('simple_form.labels.title'), :placeholder => t('simple_form.placeholders.title')
+            %p.hint= t('simple_form.hints.title')
+
+      
+      .grid-x.grid-padding-x
+        .large-8.large-offset-2.medium-12.cell
+          .form-inputs
+            = f.input :location, :label => t('simple_form.labels.location'), :placeholder => t('simple_form.placeholders.location')
+            %p.hint= t('simple_form.hints.location')
+      
+      .grid-x.grid-padding-x
+        .large-8.large-offset-2.medium-12.cell
+          .form-inputs
+            = tinymce
+            = f.input :teaser, :label => t('simple_form.labels.teaser'), :as => 'text', :input_html => {:rows => 8, class: 'large-text tinymce', :placeholder => t('simple_form.placeholders.teaser') }
+            %p.hint= t('simple_form.labels.teaser')
+     
+    .large-6.medium-12.cell      
+      %p
+        Vorschau des Beitrages
+      .callout
+        %h3
+          Name des Submitters          
+  
+    
+
+  %hr
+  .grid-x
+    .large-6.medium-6.small-12.cell
+      .form-actions.text-right
+        = f.button :submit, t('simple_form.labels.submit'), :class => "button"

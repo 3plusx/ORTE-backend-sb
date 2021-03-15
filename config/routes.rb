@@ -45,6 +45,18 @@ Rails.application.routes.draw do
     resources :groups
   end
 
+  scope "/:locale" do
+    resources :submissions, :controller => "public/submissions" do
+      get :new
+      get :new_place, :controller => "public/submissions", :action => 'new_place'
+      post :create_place, :controller => "public/submissions", :action => 'create_place'
+      get :new_image, :controller => "public/submissions", :action => 'new_image'
+      post :create_image, :controller => "public/submissions", :action => 'create_image'
+      get :finish_submission, :controller => "public/submissions", :action => 'finish_submission'
+
+    end
+  end
+
   namespace :public do
     resources :maps, only: [:show, :index], :defaults => { :format => :json } do
       resources :layers, only: [:show], :defaults => { :format => :json }

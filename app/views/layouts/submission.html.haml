@@ -1,0 +1,64 @@
+!!! 5
+%html{ lang: "de" }
+  %head
+    %meta{ charset: "utf-8" }
+    %meta{ name: 'robots', content: 'noindex, nofollow' }
+    %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
+
+    - title = content_for?(:title) ? "#{yield(:title)} — #{Settings.app_name}" : "#{Settings.app_name}"
+    %title= title
+
+    %meta{property:"og:type", content:"website"}
+    %meta{property:"og:title", content:"#{title}"}
+    %meta{property:"og:description", content:"#{Settings.app_tagline}"}
+    %meta{property:"og:image", content:"#{Settings.app_url}#{asset_path('apple-touch-icon.png')}"}
+
+
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tag
+
+    = favicon_link_tag asset_path('apple-touch-icon.png'), rel: 'apple-touch-icon', type: 'image/png', sizes: '180x180'
+    = favicon_link_tag asset_path('favicon-32x32.png'), rel: 'icon', type: 'image/png', sizes: '32x32'
+    = favicon_link_tag asset_path('favicon-16x16.png'), rel: 'icon', type: 'image/png', sizes: '16x16'
+    = favicon_link_tag asset_path('site.webmanifest'), rel: 'manifest'
+    = favicon_link_tag asset_path('safari-pinned-tab.svg'), rel: 'mask-icon', color: '#5bbad5'
+    = favicon_link_tag asset_path('favicon.ico'), rel: 'shortcut icon'
+    %meta{name: 'msapplication-config', content: '/assets/favicon/browserconfig.xml'}
+    %meta{name: 'theme-color', content: '#ffffff' }
+
+
+
+  - klass = ""
+  - if current_user
+    - klass = "logged_in "
+  - if Rails.env == 'staging' || Rails.env == 'developement'
+    - klass = klass + "#{Rails.env.parameterize}"
+  - id = ''
+  - if controller_name
+    - id = "#{controller_name.parameterize}"
+
+  %body{:id=>"#{id}", :class=>"#{klass}"}
+    %header
+      = #render 'layouts/navigation'
+
+    %main{role: "main"}
+      .grid-x
+        .cell.medium-12
+          = render 'layouts/messages'
+      .grid-x
+        .cell.medium-12
+          = yield
+    %footer.footer
+      .grid-x
+        .cell.large-10.medium-8.small-6
+          = render partial: "layouts/version"
+          = render partial: "layouts/credits"
+        .cell.large-2.medium-4.small-6.text-right
+          
+          - if user_signed_in?
+            %span.show-for-small-only
+              %a{:href => settings_path, :title => 'Your Settings'}
+                %i.fi-widget.fi-21
+
+

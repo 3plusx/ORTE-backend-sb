@@ -1,0 +1,47 @@
+= simple_form_for [@map, @submission, @place, @image], :method => 'POST',:url => '/' + params[:locale] + '/submissions/'+@submission.id.to_s+'/create_image?layer_id=1' do |f|
+  = f.input :place_id, :as => :hidden, :input_html => { :value => @place.id }
+  .grid-x.grid-padding-x
+    .large-10.large-offset-1.medium-12.cell
+      %h1 
+        = @map.title
+      %h2
+        = @map.subtitle
+  .grid-x.grid-padding-x
+    .large-10.large-offset-1.medium-12.cell
+      - [{name: 'english', code: 'en'}, {name: 'deutsch', code: 'de'}, {name: 'francais', code: 'fr'}].each do |language|
+        = link_to language[:name], current_page_params.merge(layer_id: params[:layer_id], locale: language[:code])
+
+          
+  .grid-x.grid-padding-x
+    .large-10.large-offset-1.medium-12.cell
+      != @map.text
+ 
+  .grid-x.grid-padding-x
+    .large-6.medium-12.cell
+
+      .grid-x.grid-padding-x
+        .large-8.large-offset-2.medium-12.cell
+          .form-inputs
+            = f.input :image, as: 'file', :label => t('simple_form.labels.image')
+            %p.hint= t('simple_form.hints.image')
+      .grid-x.grid-padding-x
+        .large-8.large-offset-2.medium-12.cell
+          .form-inputs
+            = f.input :title, :label => t('simple_form.labels.image_description'), :placeholder => t('simple_form.placeholders.image_description')
+            %p.hint= t('simple_form.hints.image_description')
+
+     
+    .large-6.medium-12.cell      
+      %p
+        Vorschau des Beitrages
+      .callout
+        %h3
+          Name des Submitters          
+  
+    
+
+  %hr
+  .grid-x
+    .large-6.medium-6.small-12.cell
+      .form-actions.text-right
+        = f.button :submit, t('simple_form.labels.submit'), :class => "button"
