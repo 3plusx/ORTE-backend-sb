@@ -3,6 +3,20 @@
 class Public::SubmissionsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[new create new_place create_place new_image create_image]
   layout 'submission'
+
+  around_action :switch_locale
+
+  def switch_locale(&action)
+    locale = params[:locale] || I18n.default_locale
+    I18n.with_locale(locale, &action)
+  end
+
+  def default_url_options(options = {})
+    logger.debug "default_url_options is passed options: #{options.inspect}\n"
+    { locale: I18n.locale }
+  end
+
+
   def new
     return unless layer_from_id.positive?
 
