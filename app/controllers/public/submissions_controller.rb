@@ -29,7 +29,6 @@ class Public::SubmissionsController < ApplicationController
     @submission.privacy = params[:privacy]
     @submission.rights = params[:rights]
 
-    @layer = Layer.find(layer_from_id)
     @map = @layer.map
     @user = User.new
   end
