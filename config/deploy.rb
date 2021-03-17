@@ -1,22 +1,27 @@
 lock "~> 3.15"
 
+# making Rails.application available here
+require File.expand_path("./environment", __dir__)
+
 load File.expand_path('../deploy/tagit.rb', __FILE__)
 require File.expand_path('../deploy/cap_notify', __FILE__)
 
 set :application, "ORTE-backend"
 set :repo_url, "git@github.com:ut/ORTE-backend.git"
-set :deploy_to, "/home/app/#{fetch(:application)}-#{fetch(:stage)}"
-set :ssh_options, forward_agent: true, verify_host_key: :secure
+set :deploy_to, "/home/orte-deploy/#{fetch(:application)}-#{fetch(:stage)}"
+set :ssh_options, forward_agent: true, verify_host_key: :always
 set :keep_releases, 3
 set :rvm_type, :user
 set :bundle_flags,    ''
-set :bundle_dir,      ''
-set :bundle_path, nil
+set :bundle_without, [:development]
+# set :bundle_dir,      ''
+# set :bundle_path, nil
 set :bundle_binstubs, nil
 set :notify_emails, ['']
 
-append :linked_files, "config/secrets.yml"
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+# append :linked_files, "config/secrets.yml"
+set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/master.key')
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "storage"
 
 
 # Default branch is :master
@@ -47,8 +52,6 @@ namespace :deploy do
     end
   end
   after :publishing,  'deploy:restart'
-  # TODO: besser via Capfile/passenger
-
 
   desc 'Send email notification'
   task :send_notification do
@@ -101,8 +104,8 @@ namespace :deploy do
     end
   end
 
-  before :migrate,    'deploy:db_backup'
-  after :updating,    'deploy:tagit'
-  after :publishing,  'deploy:send_notification'
+  # before :migrate,    'deploy:db_backup'
+  # after :updating,    'deploy:tagit'
+  # after :publishing,  'deploy:send_notification'
 
 end

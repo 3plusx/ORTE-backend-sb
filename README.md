@@ -1,9 +1,9 @@
-[![Build Status](https://travis-ci.org/ut/ORTE-backend.svg?branch=main)](https://travis-ci.org/ut/ORTE-backend) ![Release](https://img.shields.io/badge/tag-v0.43-blue.svg) [![Coverage Status](https://coveralls.io/repos/github/ut/ORTE-backend/badge.svg?branch=main)](https://coveralls.io/github/ut/ORTE-backend?branch=main) [![Maintainability](https://api.codeclimate.com/v1/badges/ab3d16e763664a942d72/maintainability)](https://codeclimate.com/github/ut/ORTE-backend/maintainability)
+[![Build Status](https://travis-ci.org/ut/ORTE-backend.svg?branch=main)](https://travis-ci.org/ut/ORTE-backend) ![Release](https://img.shields.io/badge/tag-v0.5-blue.svg) [![Coverage Status](https://coveralls.io/repos/github/ut/ORTE-backend/badge.svg?branch=main)](https://coveralls.io/github/ut/ORTE-backend?branch=main) [![Maintainability](https://api.codeclimate.com/v1/badges/ab3d16e763664a942d72/maintainability)](https://codeclimate.com/github/ut/ORTE-backend/maintainability)
 
 
 # ORTE-backend
 
-Simple, straightforward backend for creating and managing places/POIs (or in german "Orte") and additional informations of a web-based map. Output is a public available API w/JSON and exportable as CSV/JSON.
+Simple, straightforward backend for creating and managing places/POIs (or in german "Orte") and additional informations of a web-based map. Output is a public available API w/JSON and exportable as CSV/JSON/GeoJSON.
 
 Based on Ruby on Rails 5, MySQL/MariaDB, jQuery, Leaflet and Foundation 6.
 
@@ -50,6 +50,16 @@ $ bundle exec rails db:schema:load
 $ bundle exec rails db:seed
 ```
 
+### Credentials + deployment
+
+If you need custom credentials, e.g for a server installation, you can secre them with rails credentials and a master.key. Edit the credentials with
+
+```bash
+$ EDITOR=vim bundle exec rails credentials:edit
+```
+
+
+
 ### Run
 
 ```bash
@@ -63,7 +73,7 @@ Code + Design by Ulf Treger <ulf.treger@googlemail.com> with kind support from a
 * [Pragma Shift](https://www.pragma-shift.net/), Hamburg (code donation),
 * Treffentotal 2018, Hamburg (first use public case with a map at [map.treffentotal.de](https://map.treffentotal.de), which gets its geolocations from ORTE backend via JSON),
 * Participants of recent workshops of [city/data/explosion](https://citydataexplosion.tumblr.com/) at Kunst- und Kulturverein Spedition, Bremen,
-* and members of the working group "Queer narratives, mappped" 💖 
+* and members of the working group "Queer narratives, mappped" 💖
 
 ## Feedback & Contributions
 
