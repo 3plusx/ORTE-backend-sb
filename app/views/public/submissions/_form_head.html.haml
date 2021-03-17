@@ -10,7 +10,7 @@
 .grid-x.grid-padding-x
   .large-10.large-offset-1.medium-12.cell
     - [{name: 'english', code: 'en'}, {name: 'deutsch', code: 'de'}, {name: 'francais', code: 'fr'}].each do |language|
-      = link_to language[:name], current_page_params.merge(layer_id: params[:layer_id], locale: language[:code])
+      = link_to language[:name], current_page_params.merge(layer_id: params[:layer_id],place_id: params[:place_id], locale: language[:code])
 .grid-x.grid-padding-x
   .large-10.large-offset-1.medium-12.cell
     = t('simple_form.form_intro.text')

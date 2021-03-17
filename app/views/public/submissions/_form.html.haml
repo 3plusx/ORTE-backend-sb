@@ -1,5 +1,6 @@
 = simple_form_for [@map,@layer, @submission], :url => '/' + params[:locale] + '/submissions?layer_id=1' do |f|
   = f.input :layer_id, :as => :hidden, :input_html => { :value => @layer.id }
+  = f.input :locale, :as => :hidden, :input_html => { :value => params[:locale] }
   = render 'form_head'
   .grid-x.grid-padding-x
     .large-6.medium-12.cell
@@ -9,7 +10,7 @@
         .large-8.large-offset-2.medium-12.cell
           = f.error_notification
           - if @submission.errors.full_messages.present?
-            %ul.hide
+            %ul
               = @submission.errors.full_messages.each do |item,msg|
                 %li= item
           = f.input :name, :label => t('simple_form.labels.title'), :placeholder => t('simple_form.placeholders.title')
