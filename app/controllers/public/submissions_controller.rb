@@ -20,6 +20,8 @@ class Public::SubmissionsController < ApplicationController
   def new
     return unless layer_from_id.positive?
 
+    @layer = Layer.find(layer_from_id)
+    return unless @layer.public_submission
     @submission = Submission.new
     @submission.name = params[:name]
     @submission.locale = params[:locale]
