@@ -10,6 +10,11 @@ namespace :locales do
       'en_de_simpleform_keys.csv'
     )
 
+    LocalesExportImport::Yaml2Csv.convert(
+      %w[config/locales/en.yml config/locales/de.yml],
+      'en_de_keys.csv'
+    )
+
     log("Task completed in #{Time.now - start_time} seconds.")
   end
   task import: :environment do
