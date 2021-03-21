@@ -47,7 +47,7 @@ Rails.application.routes.draw do
 
   scope "/:locale" do
     resources :submissions, :controller => "public/submissions" do
-      get :new
+      get :new, :controller => "public/submissions", :action => 'new'
       post :create, :controller => "public/submissions", :action => 'create'
       get :new_place, :controller => "public/submissions", :action => 'new_place'
       post :create_place, :controller => "public/submissions", :action => 'create_place'

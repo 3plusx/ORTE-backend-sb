@@ -33,20 +33,17 @@ class Public::SubmissionsController < ApplicationController
     @user = User.new
   end
 
-  # POST /submissions
-  # POST /submissions.json
   def create
     @submission = Submission.new(submission_params)
     @layer = Layer.find(layer_from_id)
+    return unless @layer.public_submission
     @map = @layer.map
 
     respond_to do |format|
       if @submission.save
-        format.html { redirect_to submission_new_place_path(locale: 'de', submission_id: @submission.id, layer_id: layer_from_id), notice: 'Submission was successfully created.' }
-        format.json { render :show, status: :created, location: @place }
+        format.html { redirect_to submission_new_place_path(locale: params[:locale], submission_id: @submission.id, layer_id: layer_from_id), notice: 'Submission was successfully created.' }
       else
         format.html { render :new }
-        format.json { render json: @place.errors, status: :unprocessable_entity }
       end
     end
   end
