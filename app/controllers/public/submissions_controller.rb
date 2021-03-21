@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SubmissionsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[new create new_place create_place new_image create_image]
+  skip_before_action :authenticate_user!, only: %i[new create new_place create_place new_image create_image finished]
   layout 'submission'
 
   around_action :switch_locale
@@ -41,6 +41,7 @@ class Public::SubmissionsController < ApplicationController
 
     respond_to do |format|
       if @submission.save
+        session[:submission_id] = @submission.id
         format.html { redirect_to submission_new_place_path(locale: params[:locale], submission_id: @submission.id, layer_id: layer_from_id), notice: 'Submission was successfully created.' }
       else
         format.html { render :new }
@@ -49,9 +50,8 @@ class Public::SubmissionsController < ApplicationController
   end
 
   def new_place
-    print params.inspect
-
-    @submission = Submission.find(submission_from_id)
+    return unless session[:submission_id].positive?
+    @submission = Submission.find(session[:submission_id])
     @layer = Layer.find(layer_from_id)
     @map = @layer.map
 
@@ -66,18 +66,19 @@ class Public::SubmissionsController < ApplicationController
   end
 
   def create_place
-    @submission = Submission.find(submission_from_id)
+    return unless session[:submission_id].positive?
+    @submission = Submission.find(session[:submission_id])
     @place = Place.new(place_params)
     @place.layer_id = layer_from_id
     @place.title = @submission.name
-    @submission.place = @place
     @layer = Layer.find(layer_from_id)
     @map = @layer.map
 
     respond_to do |format|
       if @place.save
-        # @submission.save!
-        format.html { redirect_to submission_new_image_path(locale: 'de', place_id: @place.id, submission_id: @submission.id, layer_id: layer_from_id), notice: 'Place was successfully created.' }
+        @submission.place = @place
+        @submission.save!
+        format.html { redirect_to submission_new_image_path(locale: 'de', layer_id: layer_from_id), notice: t('activerecord.messages.models.place.created')}
         format.json { render :show, status: :created, location: @place }
       else
         format.html { render :new_place }
@@ -87,23 +88,26 @@ class Public::SubmissionsController < ApplicationController
   end
 
   def new_image
+    return unless session[:submission_id].positive? 
     @image = Image.new
 
     @layer = Layer.find(layer_from_id)
     @map = @layer.map
-    @place = Place.find(place_from_id)
-    @submission = Submission.find(submission_from_id)
+    @submission = Submission.find(session[:submission_id])
+    @place = @submission.place
+    
   end
 
   def create_image
-    @submission = Submission.find(submission_from_id)
+    return unless session[:submission_id].positive?
+    @submission = Submission.find(session[:submission_id])
     @image = Image.new(image_params)
     @layer = Layer.find(layer_from_id)
     @map = @layer.map
-    @place = Place.find(place_from_id)
+    @place = @submission.place
     respond_to do |format|
       if @image.save
-        format.html { redirect_to submission_finished_path(locale: 'de', place_id: @place.id, submission_id: @submission.id, layer_id: layer_from_id), notice: 'Your contribution has been saved' }
+        format.html { redirect_to submission_finished_path(locale: 'de', submission_id: @submission.id, layer_id: layer_from_id), notice: t('activerecord.messages.models.image.created') }
         format.json { render :show, status: :created, location: @image }
       else
         format.html { render :new_image }
@@ -113,13 +117,15 @@ class Public::SubmissionsController < ApplicationController
   end
 
   def finished
-    @submission = Submission.find(submission_from_id)
-
+    return unless session[:submission_id].positive?
+    @submission = Submission.find(session[:submission_id])
+    @place = @submission.place
+    
     print @submission.inspect
-    @image = Image.sorted_by_place(place_from_id)
+    @image = Image.sorted_by_place(session[:place_id])
     @layer = Layer.find(layer_from_id)
     @map = @layer.map
-    @place = Place.find(place_from_id)
+    
   end
 
 
