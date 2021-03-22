@@ -23,6 +23,20 @@
           }
         });
       }
+
+      if( $('#place_address').length > 0 ){
+      
+        $('input#place_address').change(function(e) {
+            e.preventDefault();
+            LookupNominatim($(this).val(),$(this).data('url'));
+        });
+        $('button#addresslookup_button').click(function(e) {
+          e.preventDefault();
+          var val = $('input#place_address').val();
+          LookupNominatim(val,$('input#place_address').data('url'));
+        });
+      }
+
       
     } 
   });

@@ -3,7 +3,7 @@
   = render 'form_head'
   .grid-x.grid-padding-x
     .large-6.medium-12.cell
-
+      
       .grid-x.grid-padding-x
         .large-8.large-offset-2.medium-12.cell
           = f.error_notification
@@ -17,17 +17,27 @@
       
       .grid-x.grid-padding-x
         .large-8.large-offset-2.medium-12.cell
-          .form-inputs
-            = f.input :location, :label => t('simple_form.labels.location'), :placeholder => t('simple_form.placeholders.location')
-            %p.hint= t('simple_form.hints.location')
+          #selection{:data => { 'url' => "/#{params[:locale]}/submissions/#{@submission.id.to_s}/new_place?layer_id=1", 'map_id' => "#{@map.id}", 'layer_id' => "#{@layer.id}" }}
+            .form-inputs
+              = f.input :location, :label => t('simple_form.labels.location'), :placeholder => t('simple_form.placeholders.location')
+              %p.hint= t('simple_form.hints.location')
+
+              = f.input :address, :label => false, :placeholder => 'Add place: Name, Street + Number...', input_html: {:class => "address-lookup-field input-group-field", :data => { 'url' => "/#{params[:locale]}/submissions/#{@submission.id.to_s}/new_place?layer_id=1" }}
+              .input-group-button
+                %button{:id => 'addresslookup_button', :class => 'button secondary', :title => 'Lookup for address'}
+                  %i.fi-magnifying-glass.fi-24
+                  %i.fi-fast-forward.fi-24.hide
+            #selection-hint
+              %p
+              How to map: Search an address with the field above or double-click anywhere on the map to create a place.
+    
       
       .grid-x.grid-padding-x
         .large-8.large-offset-2.medium-12.cell
           .form-inputs
-            = tinymce
             = f.input :teaser, :label => t('simple_form.labels.teaser'), :as => 'text', :input_html => {:rows => 8, class: 'large-text tinymce', :placeholder => t('simple_form.placeholders.teaser') }
             %p.hint= t('simple_form.labels.teaser')
-     
+    
     .large-6.medium-12.cell      
       = render 'form_preview'
     
