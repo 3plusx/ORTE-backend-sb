@@ -147,6 +147,8 @@
     // ---------------
     // baselayer map
 
+    if ( $('#map').length ) {
+    
     var map = L.map('map', {
         zoomControl: false,
         layers: [marker_meta_layers],
@@ -258,7 +260,7 @@
 
 
     map.addLayer(marker_meta_layers);
-
+    }
 
 
 
