@@ -13,7 +13,7 @@ body#submissions {
     h1,
     h2,
     h3 {
-      color: #1E5365;
+      color: #1e5365;
     }
 
     hr {
@@ -23,7 +23,22 @@ body#submissions {
       border: 1px solid #aaa;
     }
     .form-actions input.button[type="submit"] {
-      background-color: #1E5365;
+      background-color: #1e5365;
+    }
+    .place_address {
+      width: 100%;
+      input[type="text"] {
+        margin: 0;
+      }
+    }
+    .response-list {
+      position: absolute;
+      background-color: white;
+      border: 1px solid #ccc;
+      margin-top: 0px;
+    }
+    .thumbnail {
+      max-width: 300px;
     }
   }
   main {

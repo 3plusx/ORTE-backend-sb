@@ -2,11 +2,11 @@
 
     if( $('#submissions').length > 0 ){
       // setup handler for form field changes
-      var form_fields = ['submission_name', 'place_location', 'place_teaser'];
+      var form_fields = ['submission_name', 'place_location', 'place_teaser', 'place_address'];
       form_fields.forEach(element => {
         if( $('#' + element).length > 0 && $('#' + element + '_receiver').length > 0 ) {
           
-          $('#' + element).on('input',function(){
+          $('#' + element).on('input change',function(){
             var value = $( this ).val();
             $('#' + element + '_receiver').text(value)
          });
@@ -26,17 +26,155 @@
 
       if( $('#place_address').length > 0 ){
       
-        $('input#place_address').change(function(e) {
+        $('input#place_address').on('keyup', function(e) {
+            console.log('change', $(this).val())
             e.preventDefault();
-            LookupNominatim($(this).val(),$(this).data('url'));
+            LookupCity($(this).val());
         });
-        $('button#addresslookup_button').click(function(e) {
+        $('button#place_addresslookup_button').click(function(e) {
           e.preventDefault();
           var val = $('input#place_address').val();
-          LookupNominatim(val,$('input#place_address').data('url'));
+          LookupCity(val);
         });
       }
 
       
     } 
   });
+
+
+  function LookupCity(address = '') {
+    $.ajaxSetup({
+      headers : {
+        'User-Agent' : 'ORTE-Backend, in development (https://github.com/ut/ORTE-backend)',
+        'crossDomain' : true,
+        'Accept-Language' : $('#locale').val()
+      }
+    });
+    $('.response-list').remove();
+    $('#selection-hint').html('<p>Searching...</p>');
+    var items = [];
+    console.log("---------------------");
+    console.log("LookupNominatim");
+    console.log("Checking for params...");
+    //var url = PrepareBeforeLookup(url);
+    var url = '';
+    if ( address === '' ) {
+      $('#selection-hint').html("<p><strong>No input!</strong> Please type in a complete address ('Street Number, City')</p>");
+      $('#selection-hint').addClass('active');
+    }
+    if ( address.length < 5 ) {
+      console.log('Lookup:: Value too short!');
+      $('#selection-hint').html("<p><strong>Input too short.</strong> Please type in a complete address ('Street Number, City')</p>");
+      $('#selection-hint').addClass('active');  
+    } else {
+      console.log('Lookup:: '+address);
+      //example
+      // https://nominatim.openstreetmap.org/search?q=135+pilkington+avenue,+birmingham&format=xml&polygon=1&addressdetails=1
+      var nominatium_url = 'https://nominatim.openstreetmap.org/search';
+      var nominatium_url_params = '&format=json&addressdetails=1&locale=de'
+
+      var request = $.getJSON( nominatium_url+"?q="+address+nominatium_url_params, function( data ) {
+
+          console.log(data);
+          // if no result
+          if ( !data || data.length === 0) {
+            console.log('Lookup:: No result');
+            $('#selection-hint').html("<p>Nothing found. Please try another adress!  (Type 'Street Number, City')</p>");
+            $('#selection-hint').addClass('active');
+            return;
+          }
+          // if results
+          console.log("items: "+items.length);
+          console.log("response: "+$('#response').length);
+          $('.response-list').remove();
+          $.each( data, function( key, val ) {
+            console.log('Lookup:: Data value class ' + val.class);
+            var regexp = /amenity|building|highway|boundary/gi;
+            var label = ''
+            if ( val.class === 'building') {
+              label = 'Adresse:';
+            }
+            var href = url+'?address='+val.display_name+'&lat='+val.lat+'&lon='+val.lon;
+
+            // OR better get address details
+            /*
+            pub Café Treibeis
+            house_number  25
+            road  Gaußstraße
+            suburb  Ottensen
+            city_district Altona
+            state Hamburg
+            postcode  22765
+            country Germany
+            country_code  de
+            */
+
+            if ( val.address !== 'undefined') {
+              var location = ''; var address= ''; var road = ''; var house_number = ''; var postcode = '';
+              location = val.address[Object.keys(val.address)[0]];
+              console.log("Lookup:: Location YEAH "+location);
+              if ( typeof val.address.road !== 'undefined') {
+                road = val.address.road;
+                if ( typeof val.address.house_number !== 'undefined') {
+                  house_number   = " "+val.address.house_number;
+                  address = "&address="+road+" "+house_number;
+                } else {
+                  address = "&address="+road;
+                }
+              }
+              if ( typeof val.address.postcode !== 'undefined') {
+                postcode = "&postcode="+val.address.postcode;
+              }
+              var city = ''
+              if ( val.address && val.address.city && (val.address.city !== 'undefined')) {
+                city = val.address.city;
+              } else {
+                city = val.address.state
+              }
+              // TODO verify all values
+              // FIXME hamburg as state
+              href = url+'?'+location+address+postcode+"&city="+city+'&lat='+val.lat+'&lon='+val.lon;
+            }
+
+
+            if ( val.class.match(regexp) ) {
+              console.log('Lookup:: Using entry');
+              items.push( "<li id='" + key + "' class='nominatim_results' ><a href='return false;' data-zip='"+ postcode + "' data-city='"+ city + "' data-lat='"+ val.lat + "' data-lon='"+ val.lon + "' data-location='"+ label + " " + val.display_name + "'>" + label + " " + val.display_name + "</a></li>" );
+            }  
+          });
+          $( "<ul/>", {
+            "id": "response",
+            "class": "response-list",
+            html: items.join( "" ),
+          }).appendTo( "#selection" );
+
+          console.log( "Success" );
+          $('#selection-hint').html("<p>Please select one result below (or type in another address).</p>");
+          $('#selection-hint').addClass('active');
+        }).done(function() {
+          $('.nominatim_results a').on('click', function(e){
+            console.log( "Click" );
+            e.preventDefault();
+            var lat = $(this).data('lat');
+            console.log( "Click", lat );
+            $('#place_lat').val(lat);
+            $('#place_lon').val($(this).data('lon'));
+            $('#place_zip').val($(this).data('zip'));
+            $('#place_city').val($(this).data('city'));
+            $('#place_location').val($(this).data('location'));
+            $('#place_address').val($(this).data('location'));
+            $('#place_address_receiver').text($(this).data('location'));
+
+            $('.response-list').remove();
+            $('#selection-hint').html("");
+          });
+        }).fail(function() {
+          console.log( "error" );
+          $('#selection-hint').html("<p> :( Nothing found. Please try another input.</p>");
+          $('#selection-hint').addClass('active');
+        }).always(function() {
+          console.log( "Complete" );
+        });
+    }
+  }
