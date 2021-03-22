@@ -12,6 +12,17 @@
          });
         }  
       });
+
+      if( $('#image_upload').length > 0 ){
+        //setup handler for image switch
+        $('#image_upload').on('change  changed.zf.slider',function(){
+          if($( this ).is(':checked')) {
+            $('#image_accordion').foundation('down',$("#image_form_item .accordion-content"));
+          } else {
+            $('#image_accordion').foundation('up',$("#image_form_item .accordion-content"));
+          }
+        });
+      }
       
     } 
   });

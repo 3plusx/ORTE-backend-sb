@@ -8,17 +8,27 @@
              
   .grid-x.grid-padding-x
     .large-6.medium-12.cell
-
       .grid-x.grid-padding-x
         .large-8.large-offset-2.medium-12.cell
           .form-inputs
-            = f.input :file, as: :file, input_html: { accept: ('image'), multiple: false }, label: t('simple_form.labels.image')
-            %p.hint= t('simple_form.hints.image')
+            .switch.large
+              %input.switch-input(id="image_upload" checked="checked" type="checkbox" name="image_upload")
+              %label.switch-paddle(for="image_upload")
+                %span.show-for-sr
+                  Upload image
       .grid-x.grid-padding-x
         .large-8.large-offset-2.medium-12.cell
-          .form-inputs
-            = f.input :title, :label => t('simple_form.labels.image_description'), :placeholder => t('simple_form.placeholders.image_description')
-            %p.hint= t('simple_form.hints.image_description')
+          %ul.accordion{"id" => 'image_accordion',"data-accordion"=>true, "data-allow-all-closed"=>"true"}
+            %li.accordion-item.is-active{"id" => "image_form_item", "data-accordion-item"=>true}
+              %a.accordion-title{"href"=>"#"}
+                Image upload
+              .accordion-content{"data-tab-content"=>true}
+                .form-inputs
+                  = f.input :file, as: :file, input_html: { accept: ('image'), multiple: false }, label: t('simple_form.labels.image')
+                  %p.hint= t('simple_form.hints.image')
+                .form-inputs
+                  = f.input :title, :label => t('simple_form.labels.image_description'), :placeholder => t('simple_form.placeholders.image_description')
+                  %p.hint= t('simple_form.hints.image_description')
 
      
     .large-6.medium-12.cell      

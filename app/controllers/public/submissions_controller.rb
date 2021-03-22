@@ -78,7 +78,7 @@ class Public::SubmissionsController < ApplicationController
       if @place.save
         @submission.place = @place
         @submission.save!
-        format.html { redirect_to submission_new_image_path(locale: 'de', layer_id: layer_from_id), notice: t('activerecord.messages.models.place.created')}
+        format.html { redirect_to submission_new_image_path(params[:locale], layer_id: layer_from_id), notice: t('activerecord.messages.models.place.created')}
         format.json { render :show, status: :created, location: @place }
       else
         format.html { render :new_place }
@@ -106,13 +106,18 @@ class Public::SubmissionsController < ApplicationController
     @map = @layer.map
     @place = @submission.place
     respond_to do |format|
-      if @image.save
-        format.html { redirect_to submission_finished_path(locale: 'de', submission_id: @submission.id, layer_id: layer_from_id), notice: t('activerecord.messages.models.image.created') }
-        format.json { render :show, status: :created, location: @image }
+      if(params[:image_upload])
+        if @image.save
+          format.html { redirect_to submission_finished_path(params[:locale], submission_id: @submission.id, layer_id: layer_from_id), notice: t('activerecord.messages.models.image.created') }
+          format.json { render :show, status: :created, location: @image }
+        else
+          format.html { render :new_image }
+          format.json { render json: @image.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render :new_image }
-        format.json { render json: @image.errors, status: :unprocessable_entity }
+        format.html { redirect_to submission_finished_path(params[:locale], submission_id: @submission.id, layer_id: layer_from_id), notice: t('submission.finished') }
       end
+
     end
   end
 
@@ -120,8 +125,6 @@ class Public::SubmissionsController < ApplicationController
     return unless session[:submission_id].positive?
     @submission = Submission.find(session[:submission_id])
     @place = @submission.place
-    
-    print @submission.inspect
     @image = Image.sorted_by_place(session[:place_id])
     @layer = Layer.find(layer_from_id)
     @map = @layer.map
