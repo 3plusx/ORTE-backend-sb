@@ -1,4 +1,4 @@
-= simple_form_for [@map, @submission, @place], :method => 'POST',:url => '/' + params[:locale] + '/submissions/'+@submission.id.to_s+'/create_place?layer_id=1' do |f|
+= simple_form_for [@map, @submission, @place], :method => 'POST',:url => '/' + params[:locale] + '/submissions/'+@submission.id.to_s+'/create_place?layer_id='+ @layer.id.to_s do |f|
   = f.input :layer_id, :as => :hidden, :input_html => { :value => @layer.id }
   = render 'form_head'
   .grid-x.grid-padding-x

@@ -1,4 +1,4 @@
-= simple_form_for [@map,@layer, @submission], :url => '/' + params[:locale] + '/submissions?layer_id=1' do |f|
+= simple_form_for [@map,@layer, @submission], :url => '/' + params[:locale] + '/submissions?layer_id=' + @layer.id.to_s do |f|
   = f.input :layer_id, :as => :hidden, :input_html => { :value => @layer.id }
   = f.input :locale, :as => :hidden, :input_html => { :value => params[:locale] }
   = render 'form_head'
