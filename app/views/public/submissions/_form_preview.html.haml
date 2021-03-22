@@ -3,7 +3,7 @@
 .callout
   %h3(id='submission_name_receiver')
     = @submission.name || t('simple_form.placeholders.title')
-  %h4(id='place_location_receiver')
+  %h4(id='place_address_receiver')
     - if @place && @place.location
       = @place.location 
     - else 
@@ -13,3 +13,17 @@
       != @place.teaser 
     - else 
       = t('simple_form.placeholders.teaser')
+  %p(id='place_image_receiver')
+    - if @place
+      - images = Image.where(place_id: @place.id)
+      - if images.count > 0
+        %p
+          Images
+        .grid-x#sortable{data: { map: @place.layer.map.id, layer: @place.layer.id, place: @place.id }}
+          - images.order('sorting ASC').each_with_index do |img,i|
+            .image.ui-state-default.thumbnail{id: "image_#{img.id}"}
+              - if img.file.attached?
+                = image_tag url_for(img.file)
+    - else 
+      = t('simple_form.placeholders.image')
+    
