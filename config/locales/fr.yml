@@ -1,5 +1,13 @@
 ---
 fr:
+  time:
+    formats:
+      day_nr: "%d."
+      daydate: "%d.%m.%Y"
+      default: "%d.%m.%Y, %H:%M"
+  date:
+    formats:
+      default: "%d.%m.%Y"
   layouts:
     navigation:
       sign_out: se déconnecter
