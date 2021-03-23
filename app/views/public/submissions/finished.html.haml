@@ -8,10 +8,6 @@
         All submissions will be published on 31.03.2021
   .grid-x.grid-padding-x
     .large-10.large-offset-1.medium-12.cell
-      - [{name: 'english', code: 'en'}, {name: 'deutsch', code: 'de'}, {name: 'francais', code: 'fr'}].each do |language|
-        = link_to language[:name], current_page_params.merge(layer_id: params[:layer_id], locale: language[:code])
-  .grid-x.grid-padding-x
-    .large-10.large-offset-1.medium-12.cell
   .grid-x.grid-padding-x
     .large-6.large-offset-3.medium-12.cell
       = render partial: 'form_preview', locals: { :index => -1 }
