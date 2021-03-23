@@ -1,6 +1,7 @@
-= simple_form_for [@map, @submission, @place, @image], :method => 'POST',:url => '/' + params[:locale] + '/submissions/'+@submission.id.to_s+'/create_image?layer_id=' + + @layer.id.to_s + '&place_id=' + @place.id.to_s do |f|
+= simple_form_for [@map, @submission, @place, @image], :method => 'POST', :url => '/' + params[:locale] + '/submissions/'+@submission.id.to_s+'/create_image?layer_id=' + + @layer.id.to_s + '&place_id=' + @place.id.to_s do |f|
   = f.association :place, as: :hidden, :input_html => { :value => @place.id }
   = render 'form_head'
+  = render partial: 'form_menu', locals: { :menu_index => 2 }
   .grid-x
     .large-12.cell
       = f.error_notification
@@ -9,15 +10,16 @@
   .grid-x.grid-padding-x
     .large-6.medium-12.cell
       .grid-x.grid-padding-x
-        .large-8.large-offset-2.medium-12.cell
+        .large-3.large-offset-2.medium-12.cell
           .form-inputs
-            .switch.large
+            %label
+              = t('simple_form.hints.image_switch') 
+            .switch.small
               %input.switch-input(id="image_upload" checked="checked" type="checkbox" name="image_upload")
               %label.switch-paddle(for="image_upload")
                 %span.show-for-sr
                   Upload image
-      .grid-x.grid-padding-x
-        .large-8.large-offset-2.medium-12.cell
+        .large-6.medium-12.cell
           %ul.accordion{"id" => 'image_accordion',"data-accordion"=>true, "data-allow-all-closed"=>"true"}
             %li.accordion-item.is-active{"id" => "image_form_item", "data-accordion-item"=>true}
               %a.accordion-title{"href"=>"#"}
@@ -32,7 +34,7 @@
 
      
     .large-6.medium-12.cell      
-      = render 'form_preview'     
+      = render partial: 'form_preview', locals: { :index => 2 }
   
     
 

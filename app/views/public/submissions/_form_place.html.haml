@@ -8,6 +8,7 @@
   = f.input :city, :as => :hidden, :input_html => { :value => @place.city }
 
   = render 'form_head'
+  = render partial: 'form_menu', locals: { :menu_index => 1 }
   .grid-x.grid-padding-x
     .large-6.medium-12.cell
       
@@ -46,7 +47,7 @@
             %p.hint= t('simple_form.labels.teaser')
     
     .large-6.medium-12.cell      
-      = render 'form_preview'
+      = render partial: 'form_preview', locals: { :index => 1 }
     
 
   %hr

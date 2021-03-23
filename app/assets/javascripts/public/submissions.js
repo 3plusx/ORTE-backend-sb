@@ -15,13 +15,24 @@
 
       if( $('#image_upload').length > 0 ){
         //setup handler for image switch
-        $('#image_upload').on('change  changed.zf.slider',function(){
-          if($( this ).is(':checked')) {
+        $('#image_upload').on('change',function(){
+          if($( '#image_upload' ).is(':checked')) {
             $('#image_accordion').foundation('down',$("#image_form_item .accordion-content"));
+            $('#place_image_placeholder').show();
           } else {
             $('#image_accordion').foundation('up',$("#image_form_item .accordion-content"));
+            $('#place_image_placeholder').hide();
           }
         });
+        $('#image_accordion').on('down.zf.accordion',function(){
+            $('#place_image_placeholder').show();
+            $( '#image_upload' ).prop('checked', true);
+        });
+        $('#image_accordion').on('up.zf.accordion',function(){
+          $('#place_image_placeholder').hide();
+          $( '#image_upload' ).prop('checked', false);
+        });
+
       }
 
       if( $('#place_address').length > 0 ){

@@ -1,27 +1,28 @@
-de:
+---
+en:
   simple_form:
-    "yes": Ja
-    "no": Nein
+    "yes": "Yes"
+    "no": "No"
     required:
-      text: Pflichtfeld
+      text: required
       mark: "*"
     error_notification:
-      default_message: "Es sind Fehler aufgetreten:"
+      default_message: "Please review the problems below:"
     preview:
-      intro: Vorschau Ihres Beitrages
+      intro: Preview of your submission
     form_intro:
       title: Gedenken zum 76. Jahrestag der Befreiung des Stalag X B Sandborstel
       text: Jemand musste Josef K. verleumdet haben, denn ohne dass er etwas Böses getan hätte, wurde er eines Morgens verhaftet. »Wie ein Hund!« sagte er, es war, als sollte die Scham ihn überleben. Als Gregor Samsa eines Morgens aus unruhigen Träumen erwachte, fand er sich in seinem Bett zu einem ungeheueren Ungeziefer verwandelt. Und es war ihnen wie eine Bestätigung ihrer neuen Träume und guten Absichten, als am Ziele ihrer Fahrt die Tochter als erste sich erhob und ihren jungen Körper dehnte. »Es ist ein eigentümlicher Apparat«, sagte der Offizier zu dem Forschungsreisenden und überblickte mit einem gewissermaßen bewundernden Blick den ihm doch wohlbekannten Apparat. Sie hätten noch ins Boot springen können, aber der Reisende hob ein schweres, geknotetes Tau vom Boden, drohte ihnen damit und hielt sie dadurch von dem Sprunge ab. In den letzten Jahrzehnten ist das Interesse an Hungerkünstlern sehr zurückgegangen. Aber sie überwanden sich, umdrängten den Käfig und wollten sich gar nicht fortrühren.Jemand musste Josef K. verleumdet haben, denn ohne dass er etwas Böses getan hätte, wurde er eines Morgens verhaftet.
     form_menu:
-      submission: "Ihre Daten"
-      place: "Ort/Beitrag"
-      image: "Bild/Medium"
+      submission: "Personal data"
+      place: "Location / Contribution"
+      image: "Image / Media"
     labels:
-      title: Name (oder Organisation)
-      teaser: Ihr Beitrag
+      title: Name (or Organisation)
+      teaser: Your contribution
       email: E-Mail
-      location: Ort
-      image: Bild hochladen
+      location: Location
+      image: Upload an image
       image_description: Image description
       rights:
         I hereby grant Gedenkstätte Sandborstel the rights to publish my contribution
@@ -38,10 +39,10 @@ de:
         city (or village) plus the name of the country.
       image: Please use formats like JPEG, GIF, PNG only, maximum size 5MB
       image_description: Describe the image in a few words
-      image_switch: Bild-Datei hochladen?
+      image_switch: Upload an image file?
     placeholders:
       title: Your name and/or organisation
-      teaser: Ihr Beitrag
+      teaser: Your submission
       email: Your email address
       location: Your city and country
       image_description: Title of the image

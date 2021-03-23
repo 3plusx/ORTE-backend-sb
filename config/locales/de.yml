@@ -41,3 +41,31 @@ de:
   layouts:
     navigation:
       sign_out: Abmelden
+  activerecord:
+    messages:
+      models:
+        submission:
+          created: Eintrag erstellt.
+        place:
+          created: Beitrag gespeichert
+        image:
+          created: Bild gespeichert
+    errors:
+      models:
+        submission:
+          attributes:
+            name:
+              blank: "darf nicht leer sein"
+            email:
+              taken: Email bereits verwendet
+        image:
+          attributes:
+            title:
+              blank: "Image description can not be blank"
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: must be accepted
+      blank: can't be blank
+      present: can't be filled
+      inclusion: must be accepted

@@ -25,6 +25,9 @@ body#submissions {
     .form-actions input.button[type="submit"] {
       background-color: #1e5365;
     }
+    input[type="checkbox"] {
+      margin: 0.2rem 0.5rem 0 0;
+    }
     .place_address {
       width: 100%;
       input[type="text"] {
@@ -39,6 +42,24 @@ body#submissions {
     }
     .thumbnail {
       max-width: 300px;
+    }
+
+    .preview:before {
+      float: left;
+      margin-right: 10px;
+      position: absolute;
+      left: -20px;
+      margin-top: 2px;
+      font-family: "foundation-icons";
+    }
+    .preview.active:before {
+      content: "\f10b";
+    }
+    .preview.todo:before {
+      content: "\f1ee";
+    }
+    .preview.done:before {
+      content: "\f126";
     }
   }
   main {

@@ -41,3 +41,30 @@ en:
   layouts:
     navigation:
       sign_out: Sign out
+  activerecord:
+    messages:
+      models:
+        submission:
+          created: Submission was successfully created.
+        place:
+          created: Place was successfully created.  
+        image:
+          created: Your image has been saved
+    errors:
+      models:
+        submission:
+          attributes:
+            name:
+              blank: "Name can't be blank"
+        image:
+          attributes:
+            title:
+              blank: "Image description can not be blank"      
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: must be accepted
+      blank: can't be blank
+      present: can't be filled  
+      inclusion: must be accepted
+              
