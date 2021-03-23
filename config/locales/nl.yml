@@ -1,0 +1,30 @@
+---
+nl:
+  layouts:
+    navigation:
+      sign_out: Afmelden
+  activerecord:
+    messages:
+      models:
+        submission:
+          created: Uw bijdrage is verzonden
+        place:
+          created: Uw locatie is aangemaakt
+        image:
+          created: Uw afbeelding is opgeslagen
+    errors:
+      models:
+        submission:
+          attributes:
+            name:
+              blank: Voer s.v.p. een naam in
+        image:
+          attributes:
+            title:
+              blank: Geef s.v.p. een beschrijving van de afbeelding aan
+  errors:
+    messages:
+      accepted: Toestemming vereist
+      blank: Verplicht
+      present: Geen invoer mogelijk
+      inclusion: Toestemming vereist

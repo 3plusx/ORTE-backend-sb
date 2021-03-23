@@ -1,0 +1,53 @@
+---
+pl:
+  simple_form:
+    'yes': Tak
+    'no': Nie
+    required:
+      text: Pole wymagane
+      mark: "*"
+    error_notification:
+      default_message: 'Wystąpił błąd:'
+    preview:
+      intro: Podgląd wpisu
+    form_intro:
+      title: Obchody 76. rocznicy wyzwolenia Stalagu X B Sandbostel
+      text: |-
+        Także i w tym roku, 29 kwietnia, nie możemy w Sandbostel wspólnie upamiętnić wyzwolenie Stalagu X B i wspomnieć tych, którzy tu cierpieli i tu zginęli. Po raz kolejny będziemy upamiętniać to wydarzenie w formie cyfrowej. Z tej okazji zostanie powstanie film, w którym zabiorą głos politycy i dyplomaci, ocaleni i ich krewni, a także młode pokolenie. Miejsce Pamięci Obozu Sandbostel zainicjowało również projekt upamiętniający, w którym możecie aktywnie uczestniczyć.
+        W poniższym formularzu można opisać swoje wspomnienia, przemyślenia związane z Stalagiem X B, przesłać zdjęcie, rysunek albo dokument. Tekst i zdjęcie wraz z Twoją lokalizacją będą od połowy kwietnia opublikowane na interaktywnej mapie świata (www.sandbostel76.de).
+        Formularz będzie dostępny online do 9 maja. Dokonane wpisy będą stopniowo dodawane do mapy świata. W 76. rocznicę wyzwolenia Stalagu X B powstaje więc cyfrowe miejsce pamięci, które pokazuje, jak globalna jest pamięć o Sandbostel.
+        Czekamy na Twoją wiadomość - dziękujemy!
+        *
+        Bardzo dziękujemy za udział. Od połowy kwietnia, po przeglądzie redakcyjnym wpisy zostaną opublikowany na stronie www.sandbostel76.de. Później przesłane wpisy zostaną dodane po zakończeniu przeglądu.
+    labels:
+      title: Imię i nazwisko (lub organizacja)
+      teaser: Twój wpis
+      email: adres e-mail
+      location: Miejscowość
+      image: Dodaj zdjęcie
+      image_description: Opis zdjęcia
+      rights: Udzielam prawa Miejscu Pamięci Obozu Sandbostel do opublikowania mojego
+        wpisu (tekstu i zdjęć) na swojej stronie internetowej. Potwierdzam, że jestem
+        właścicielem odpowiednich praw autorskich.
+      privacy: Potwierdzam, że przeczytałem/am i zrozumiałem/am oświadczenie o ochronie
+        danych osobowych.
+      submit: Wyślij wpis
+    hints:
+      title: Twoje nazwisko zostanie opublikowane
+      teaser: Tekst o maksymalnej długości 500 znaków.
+      email: Twój adres e-mail nie zostanie opublikowany!
+      location: Twoja lokalizacja zostanie opublikowana z Twoim nazwiskiem. Proszę
+        podać miasto (lub wieś) oraz kraj.
+      image: Proszę używać tylko formatów JPEG, GIF lub PNG.  Maksymalna wielkość
+        5MB.
+      image_description: Opisz zdjęcie w kilku słowach
+    placeholders:
+      title: Podaj imię i nazwisko (lub organizację)
+      teaser: Twój wpis
+      email: Twój adres e-mail
+      location: Twoja miejscowość i kraj
+      image_description: Opis zdjęcia
+    messages:
+      accepted: Zgoda obowiązkowa
+      blank: Pozostaje wolne.
+      empty: Pozostaje wolne.

@@ -1,0 +1,53 @@
+---
+de:
+  simple_form:
+    'yes': Ja
+    'no': Nein
+    required:
+      text: Pflichtfeld
+      mark: "*"
+    error_notification:
+      default_message: 'Es sind Fehler aufgetreten:'
+    preview:
+      intro: Vorschau Ihres Beitrages
+    form_intro:
+      title: Gedenken zum 76. Jahrestag der Befreiung des Stalag X B Sandbostel
+      text: |
+        Auch in diesem Jahr können wir am 29. April nicht gemeinsam in Sandbostel an die Befreiung des Stalag X B erinnern und derer gedenken, die hier gelitten haben und gestorben sind. Wir werden die Gedenkveranstaltung erneut in einer digitalen Form begehen. Dazu wird am Jahrestag der Befreiung ein Film mit Grußworten aus Politik und Diplomatie, Beiträgen von Jugendlichen, sowie Reden von Überlebenden und Angehörigen veröffentlicht. Auch gibt es wieder ein partizipatives Gedenkprojekt, an dem Sie, die sonst vielleicht nach Sandbostel gekommen wären, sich aktiv beteiligen können.
+
+        In dem Formular können Sie Ihre Gedanken zum Tag der Befreiung des Stalag X B oder an den Menschen, um den Sie trauern, formulieren. Außerdem können Sie ein Foto von Ihrem Angehörigen, von Ihnen und Ihrer Familie, ein Dokument, eine Zeichnung oder eine andere Ihnen wichtige Abbildung beifügen. Die Texte und Abbildungen werden ab Mitte April zusammen mit Ihrem Standort auf einer interaktiven Weltkarte unter www.sandbostel76.de veröffentlicht. Später eingereichten Beiträge werden ergänzt. Das Eingabeformular bleibt bis zum 9. Mai online und die bis zum Ende der Frist eingereichten Beiträge werden ebenfalls auf der Weltkarte ergänzt. So entsteht zum 76. Jahrestag der Befreiung des Stalag X B ein digitales Denkmal, das zeigt, wie global die Erinnerung an Sandbostel ist.
+
+        Wir freuen uns auf Ihre Beiträge - vielen Dank!
+        * Vielen Dank für Ihre Beteiligung. Nach einer redaktionellen Prüfung wird der Beitrag ab Mitte April auf www.sandbostel76.de veröffentlicht. Beiträge die später eingereicht werden, werden nach der Prüfung direkt hochgeladen.
+    labels:
+      title: Name (oder Organisation)
+      teaser: Ihr Beitrag
+      email: E-Mail
+      location: Ort
+      image: Bild hochladen
+      image_description: Bildbeschreibung
+      rights: Hiermit erteile ich der Gedenkstätte Lager Sandbostel die Erlaubnis,
+        meinen Beitrag (Text und Bild) auf ihrer Website zu veröffentlichen. Ich bestätige,
+        dass ich im Besitz der Urheberrechte bin.
+      privacy: Ich bestätige, dass ich die Datenschutzerklärung gelesen und verstanden
+        habe.
+      submit: Beitrag einreichen
+    hints:
+      title: Ihr Name wird veröffentlicht.
+      teaser: Text mit einer Länge von bis zu 500 Zeichen.
+      email: Ihre E-Mail-Adresse wird nicht veröffentlicht!
+      location: Ihr Standort wird zusammen mit Ihrem Namen veröffentlicht. Bitte geben
+        Sie die Stadt (oder den Ort) sowie das Land an.
+      image: 'Bitte nur die Formate JPEG, GIF und PNG verwenden. Maximale Größe: 5
+        MB.'
+      image_description: Beschreiben Sie die Abbildung in wenigen Worten.
+    placeholders:
+      title: Ihr Name und/oder Ihre Organisation
+      teaser: Ihr Beitrag
+      email: Ihre E-Mail-Adresse
+      location: Stadt/Dorf und Land
+      image_description: Titel der Abbildung
+    messages:
+      accepted: Zustimmung erforderlich.
+      blank: ist frei.
+      empty: ist frei.

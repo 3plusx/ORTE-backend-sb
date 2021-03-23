@@ -1,0 +1,51 @@
+---
+nl:
+  simple_form:
+    'yes': Ja
+    'no': Nee
+    required:
+      text: Verplicht
+      mark: "*"
+    error_notification:
+      default_message: 'De volgende fouten zijn opgetreden:'
+    preview:
+      intro: Voorbeeld van uw bijdrage
+    form_intro:
+      title: Herdenking ter gelegenheid van '76 jaar bevrijding van Stalag X B Sandbostel'
+      text: |-
+        Ook dit jaar kunnen we helaas op 29 april niet gezamenlijk in Sandbostel de bevrijding van Stalag X B herdenken en hen die hier geleden hebben en stierven gedenken. We zullen ook dit keer de herdenkingsbijeenkomst digitaal vormgeven. Daartoe wordt op de herdenkingsdag een film met bijdragen uit politiek en diplomatie, activiteiten van scholieren en toespraken van overlevenden en familieleden van gestorvenen openbaar gemaakt. Ook zal er weer een interactief herdenkingsprojekt georganiseerd worden, waaraan U, die anders mogelijk graag naar Sandbostel gekomen was, actief kunt bijdragen.
+        Op het formulier kunt U gedachten rond de bevrijding van Stalag X B of herinneringen aan mensen die U gedenkt formuleren. Daarnaast kunt U beeldmateriaal van U of Uw familie, zoals dokumenten, tekeningen of andere voor U belangrijke afbeeldingen toevoegen. Teksten en beeldmateriaal worden vanaf medio april samen met Uw woon- of verblijfplaats op een interactieve wereldkaart op www.sandbostel76.de gepubliceerd. Bijdragen die later dan medio april nog aangeleverd worden voegen we nog toe. Het formulier blijft tot en met 9 mei online toegankelijk en de bijdragen tot aan die sluitingsdatum worden ook aan de wereldkaart toegevoegd. Op deze manier ontstaat naar onze verwachting een digitale herdenking van de 76e bevrijdingsdag van Stalag X B die duidelijk maakt hoe wereldwijd Sandbostel herdacht wordt.
+        Bij voorbaat hartelijk dank!
+        *
+        Dank U voor Uw bijdrage. Na een redactionele controle worden de bijdragen vanaf medio april op www.sandbostel76.de gepubliceerd. Bijdragen die later volgen worden eveneens na een controle direct online geplaatst.
+    labels:
+      title: Naam (of organisatie)
+      teaser: Uw bijdrage
+      email: E-mail
+      location: Plaats
+      image: Beeldmateriaal uploaden
+      image_description: Beschrijving van beeldmateriaal
+      rights: Hierbij geef ik de Gedenkstätte Lager Sandbostel toestemming, mijn bijdrage
+        (in tekst en beeld) op de website te publiceren. Ik verklaar hiermee tevens
+        dat ik de kopierechten over het materiaal heb.
+      privacy: Ik bevestig dat ik de Algemene verordening gegevensbescherming (AVG)
+        gelezen heb en begrijp
+      submit: Bijdrage verzenden
+    hints:
+      title: Uw naam wordt openbaar gemaakt
+      teaser: Tekst van maximaal 500 tekens
+      email: Uw e-mailadres wordt niet openbaar gemaakt!
+      location: Uw locatie / woonplaats wordt met uw naam openbaar gemaakt. Geef s.v.p.
+        stad / plaats en land aan.
+      image: 'Gebruik uitsluitend JPEG, GIF of PNG formaat. Maximale grootte: 5 MB'
+      image_description: Beschrijf s.v.p. de afbeelding in enkele woorden
+    placeholders:
+      title: Uw naam of die van uw organisatie
+      teaser: Uw bijdrage
+      email: Uw e-mailadres
+      location: Stad / plaats en land
+      image_description: Titel van de afbeelding
+    messages:
+      accepted: Toestemming is vereist
+      blank: Is vrij
+      empty: Is vrij

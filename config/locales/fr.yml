@@ -1,0 +1,30 @@
+---
+fr:
+  layouts:
+    navigation:
+      sign_out: se déconnecter
+  activerecord:
+    messages:
+      models:
+        submission:
+          created: Entrée réussie
+        place:
+          created: Entrée lieu de résidence réussie
+        image:
+          created: Votre photo a été enregistrée
+    errors:
+      models:
+        submission:
+          attributes:
+            name:
+              blank: La saisie du nom est obligatoire
+        image:
+          attributes:
+            title:
+              blank: Description de l'image requise
+  errors:
+    messages:
+      accepted: Consentement requis
+      blank: champ requis
+      present: ce champ reste vide
+      inclusion: Consentement requis
