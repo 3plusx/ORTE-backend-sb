@@ -19,8 +19,10 @@ namespace :locales do
   end
   task import: :environment do
     start_time = Time.now
-    csv_file_name = 'en_simpleform_keys.csv'
+    csv_file_name = 'en_de_fr_it_pl_nl_simpleform_keys.csv'
     LocalesExportImport::Csv2Yaml.convert(csv_file_name, 'config/locales/', 'simple_form_')
+    csv_file_name = 'en_de_fr_it_pl_nl_keys.csv'
+    LocalesExportImport::Csv2Yaml.convert(csv_file_name, 'config/locales/', '')
     log("Task completed in #{Time.now - start_time} seconds.")
   end
   def log(msg)
