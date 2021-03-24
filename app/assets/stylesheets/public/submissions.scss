@@ -4,6 +4,14 @@
 
 body#submissions {
   background-color: white;
+
+
+  main {
+    position: static;
+    width: 75%;
+    min-width: 700px;
+    margin: 20px auto;
+  }
 }
 #submissions {
   #form-wrapper {
@@ -18,9 +26,38 @@ body#submissions {
 
     hr {
       border-bottom: 2px solid #aaa;
+      width: 80%;
+      margin: 40px auto;
+
     }
-    .callout {
-      border: 1px solid #aaa;
+
+    button.secondary, .button.secondary {
+        background-color: white;
+        border: 1px solid #bbb;
+        color: #777 !important;
+        margin-right: 10px;
+    }
+    .button.secondary.active,
+    button.secondary:hover, .button.secondary:hover {
+        border: 1px solid #333;
+        color: #333 !important;
+    }
+    .breadcrumbs {
+      margin: 0 0 0 0;
+      li {
+        font-size: 1rem;
+        color: #777;
+        a {
+          color: #777;
+        }
+      }
+      li.current {
+        font-size: 1rem;
+        color: #c6c600;
+        a {
+          color: #c6c600;
+        }
+      }
     }
     .form-actions input.button[type="submit"] {
       background-color: #1e5365;
@@ -34,6 +71,7 @@ body#submissions {
         margin: 0;
       }
     }
+    #place_teaser_counter.warning { color: #c00; }
     .response-list {
       position: absolute;
       background-color: white;
@@ -42,6 +80,10 @@ body#submissions {
     }
     .thumbnail {
       max-width: 300px;
+    }
+    .callout#preview {
+      border: none;
+      background-color: rgba(224, 223, 216, 0.75);
     }
 
     .preview:before {
@@ -55,12 +97,19 @@ body#submissions {
     .preview.active:before {
       content: "\f10b";
     }
+    .preview.todo {
+      color: #aaa;
+    }
     .preview.todo:before {
       content: "\f1ee";
+      content: "\2014";
     }
     .preview.done:before {
       content: "\f126";
     }
+  }
+  .form-actions {
+      margin: 15px 15px 0;
   }
   main {
     margin: 65px 20px 0 20px;

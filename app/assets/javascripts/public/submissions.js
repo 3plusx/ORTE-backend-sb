@@ -1,17 +1,70 @@
   $(function () {
 
     if( $('#submissions').length > 0 ){
+
+      // hide image preview unless user chooses to provide an image
+      $('#new_image #place_image_placeholder').hide();
+      if (( $('#new_image #image_title').length > 0 ) &&  ( $('#image_title')[0].value.length > 0 )) {
+        console.log( $('#image_title')[0].value.length );
+        $('#place_image_placeholder').show();
+      }
+      $('#image_title').on('input change',function(){
+        if ( this.value.length > 0 ) {
+          console.log( this.value.length );
+          $('#place_image_placeholder').show();
+        } else {
+          $('#place_image_placeholder').hide();
+        }
+      });
       // setup handler for form field changes
       var form_fields = ['submission_name', 'place_location', 'place_teaser', 'place_address'];
       form_fields.forEach(element => {
         if( $('#' + element).length > 0 && $('#' + element + '_receiver').length > 0 ) {
-          
+          // check on page load
+          var value = $('#' + element).val();
+          if ( !value.length > 0 ) {
+              value = "&nbsp;"
+          }
+          $('#' + element + '_receiver').html(value);
+
+
+
+          // check on input or change
           $('#' + element).on('input change',function(){
             var value = $( this ).val();
-            $('#' + element + '_receiver').text(value)
+            if ( !value.length > 0 ) {
+              value = "&nbsp;"
+            }
+            $('#' + element + '_receiver').html(value);
          });
-        }  
+        }
       });
+
+
+      if ( $('textarea#place_teaser').length > 0 ) {
+        var current_textarea_length = $('textarea#place_teaser')[0].value.length;
+        if ( current_textarea_length > 1  ) {
+          $('#place_teaser_counter').text(current_textarea_length);
+        }
+        if (current_textarea_length >= 450) {
+          $('#place_teaser_counter').addClass('warning');
+        }
+
+
+        $('textarea#place_teaser').on('change keyup paste', function() {
+            var len = this.value.length;
+            if (len >= 450) {
+              $('#place_teaser_counter').addClass('warning');
+            } else {
+              $('#place_teaser_counter').removeClass('warning');
+            }
+            if (len >= 500) {
+              this.value = this.value.substring(0, 500);
+            } else {
+              $('#place_teaser_counter').text(len);
+            }
+        });
+      }
 
       if( $('#image_upload').length > 0 ){
         //setup handler for image switch
@@ -36,7 +89,7 @@
       }
 
       if( $('#place_address').length > 0 ){
-      
+
         $('input#place_address').on('keyup', function(e) {
             console.log('change', $(this).val())
             e.preventDefault();
@@ -49,8 +102,8 @@
         });
       }
 
-      
-    } 
+
+    }
   });
 
 
@@ -77,7 +130,7 @@
     if ( address.length < 5 ) {
       console.log('Lookup:: Value too short!');
       $('#selection-hint').html("<p><strong>Input too short.</strong> Please type in a complete address ('Street Number, City')</p>");
-      $('#selection-hint').addClass('active');  
+      $('#selection-hint').addClass('active');
     } else {
       console.log('Lookup:: '+address);
       //example
@@ -152,7 +205,7 @@
             if ( val.class.match(regexp) ) {
               console.log('Lookup:: Using entry');
               items.push( "<li id='" + key + "' class='nominatim_results' ><a href='return false;' data-zip='"+ postcode + "' data-city='"+ city + "' data-lat='"+ val.lat + "' data-lon='"+ val.lon + "' data-location='"+ label + " " + val.display_name + "'>" + label + " " + val.display_name + "</a></li>" );
-            }  
+            }
           });
           $( "<ul/>", {
             "id": "response",
