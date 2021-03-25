@@ -79,10 +79,8 @@ class Public::SubmissionsController < ApplicationController
         @submission.place = @place
         @submission.save!
         format.html { redirect_to submission_new_image_path(params[:locale], layer_id: layer_from_id), notice: t('activerecord.messages.models.place.created')}
-        format.json { render :show, status: :created, location: @place }
       else
         format.html { render :new_place }
-        format.json { render json: @place.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -109,10 +107,8 @@ class Public::SubmissionsController < ApplicationController
       if(params[:image_upload])
         if @image.save
           format.html { redirect_to submission_finished_path(params[:locale], submission_id: @submission.id, layer_id: layer_from_id), notice: t('activerecord.messages.models.image.created') }
-          format.json { render :show, status: :created, location: @image }
         else
           format.html { render :new_image }
-          format.json { render json: @image.errors, status: :unprocessable_entity }
         end
       else
         format.html { redirect_to submission_finished_path(params[:locale], submission_id: @submission.id, layer_id: layer_from_id), notice: t('submission.finished') }
