@@ -38,6 +38,8 @@ en:
         contribution (Text and Images) on there website. I confirm that I am owner
         of the necessary copyright.
       privacy: I hereby confirm that I/we have read and understood the privacy statement.
+      button_step1: Go to step 2
+      button_step2: Go to step 3
       submit: Submit submission
     hints:
       title: Your name will be published

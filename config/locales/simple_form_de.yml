@@ -41,6 +41,8 @@ de:
       privacy:
         Ich bestätige, dass ich die Datenschutzerklärung gelesen und verstanden
         habe.
+      button_step1: Weiter zu Schritt 2
+      button_step2: Weiter zu Schritt 3
       submit: Beitrag einreichen
     hints:
       title: Ihr Name wird veröffentlicht.
