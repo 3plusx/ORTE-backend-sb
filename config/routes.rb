@@ -2,6 +2,12 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  if Rails.env.production?
+    root :to => 'public/submissions#new', locale: 'de', layer_id: 2, constraints: { host: 'submissions.stiftung-lager-sandbostel.de'  }
+  else
+    root :to => 'public/submissions#new', locale: 'de', layer_id: 2, constraints: { host: 'submissions-staging.stiftung-lager-sandbostel.de'  }
+  end
+
   root 'start#index'
 
   get 'info', to: 'start#info'
