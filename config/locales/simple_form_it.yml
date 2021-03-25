@@ -1,8 +1,8 @@
 ---
 it:
   simple_form:
-    'yes': Si
-    'no': 'No'
+    "yes": Si
+    "no": "No"
     required:
       text: Campo obbligatorio
     error_notification:
@@ -10,7 +10,8 @@ it:
     preview:
       intro: Anteprima del tuo contributo
     form_intro:
-      title: Commemorazione del 76° anniversario della liberazione dello Stalag X
+      title:
+        Commemorazione del 76° anniversario della liberazione dello Stalag X
         B Sandbostel
       text: |-
         Anche quest'anno, il 29 aprile, non possiamo ricordare insieme la liberazione di Stalag X B a Sandbostel e commemorare coloro che qui hanno sofferto e hanno perso la vita. Celebreremo quindi, nuovamente, l'evento commemorativo in forma virtuale. A tal fine, nell'anniversario della liberazione, verrà pubblicato un filmato che conterrà i saluti di personaggi di rilievo, del mondo politico e diplomatico, e conterrà anche contributi di studenti, nonchè discorsi di sopravvissuti e loro parenti. Ci sarà anche un’altro progetto di commemorazione partecipativa al quale voi, che altrimenti sareste venuti personalmente a Sandbostel, potrete partecipare attivamente.
@@ -19,8 +20,9 @@ it:
         I contributi inviati successivamente, verranno integrati. Il modulo di inserimento dei dati rimarrà online fino al 9 maggio e verranno aggiunti al mappamondo interattivo tutti i contributi inviati entro la scadenza del termine. Per il 76° anniversario della liberazione dello Stalag XB, verrà creato un sacrario digitale che mostra quanto sia globale la rimembranza di Sandbostel.
 
         Attendiamo con impazienza i vostri contributi - grazie mille!
-        *
-        Grazie per la vostra partecipazione. Dopo un controllo redazionale, l’articolo sarà pubblicato su www.sandbostel76.de a partire da metà aprile. I contributi inviati successivamente verranno caricati subito dopo la disanima.
+    form_finished:
+      title: Grazie per la vostra partecipazione.
+      subtitle: Dopo un controllo redazionale, l’articolo sarà pubblicato su <a href="https://www.sandbostel76.de">www.sandbostel76.de</a> a partire da metà aprile. I contributi inviati successivamente verranno caricati subito dopo la disanima.
     labels:
       title: Nome (o organizzazione)
       teaser: Il tuo contributo
@@ -28,7 +30,8 @@ it:
       location: Luogo
       image: Carica immagine
       image_description: Descrizione immagine
-      rights: Con la presente concedo al Sacrario di Sandbostel il permesso di pubblicare
+      rights:
+        Con la presente concedo al Sacrario di Sandbostel il permesso di pubblicare
         il mio contributo (testo e immagine) sul suo sito web. Confermo di essere
         il proprietario dell‘immagine o di possedere i diritti d‘autore.
       privacy: Confermo di aver letto e compreso l'informativa sulla privacy.
@@ -37,15 +40,17 @@ it:
       title: Il tuo nome verrà pubblicato
       teaser: Testo con una lunghezza massima di 500 caratteri.
       email: Il tuo indirizzo e-mail non sarà pubblicato!
-      location: La tua posizione sarà pubblicata insieme al tuo nome. Si prega di
+      location:
+        La tua posizione sarà pubblicata insieme al tuo nome. Si prega di
         indicare la città (o la località) e la Nazione.
-      image: 'Si prega di utilizzare solo i formati JPEG, GIF e PNG. Dimensione massima:
-        5 MB.'
+      image:
+        "Si prega di utilizzare solo i formati JPEG, GIF e PNG. Dimensione massima:
+        5 MB."
       image_description: Descrivi l'illustrazione in poche parole.
     placeholders:
       title: Il tuo nome e/o organizzazione
       teaser: Il tuo contributo
-      email: 'Il tuo indirizzo e-mail   '
+      email: "Il tuo indirizzo e-mail   "
       location: Città/Provincia/Nazione
       image_description: Titolo dell‘immagine
     messages:

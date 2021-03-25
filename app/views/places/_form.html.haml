@@ -150,8 +150,21 @@
                     Erstellt: 
                   %td  
                     #{sub.created_at} 
-            
-
+                %tr
+                  %td
+                    Status: 
+                  %td
+                    - case sub.status
+                    - when 1  
+                      %i.fi.fi-x
+                      #{sub.status} 
+                    - when 2  
+                      %i.fi.fi-x
+                      #{sub.status}   
+                    - when 3
+                      .success
+                        %i.fi.fi-check
+                        #{sub.status} 
     .large-6.medium-6.cell
       .form-inputs
         = f.input :location, :label => 'Name of Location', :input_html => {:placeholder => 'Name' }
