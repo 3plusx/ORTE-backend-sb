@@ -124,12 +124,12 @@
     //var url = PrepareBeforeLookup(url);
     var url = '';
     if ( address === '' ) {
-      $('#selection-hint').html("<p><strong>No input!</strong> Please type in a complete address ('Street Number, City')</p>");
+      $('#selection-hint').html("<p>" + I18n.t('search.lookup.no_input') +  "</p>");
       $('#selection-hint').addClass('active');
     }
     if ( address.length < 5 ) {
       console.log('Lookup:: Value too short!');
-      $('#selection-hint').html("<p><strong>Input too short.</strong> Please type in a complete address ('Street Number, City')</p>");
+      $('#selection-hint').html("<p>" + I18n.t('search.lookup.too_short') +  "</p>");
       $('#selection-hint').addClass('active');
     } else {
       console.log('Lookup:: '+address);
@@ -144,7 +144,7 @@
           // if no result
           if ( !data || data.length === 0) {
             console.log('Lookup:: No result');
-            $('#selection-hint').html("<p>Nothing found. Please try another adress!  (Type 'Street Number, City')</p>");
+            $('#selection-hint').html("<p>" + I18n.t('search.lookup.no_result') +  "</p>");
             $('#selection-hint').addClass('active');
             return;
           }
@@ -157,7 +157,7 @@
             var regexp = /amenity|building|highway|boundary/gi;
             var label = ''
             if ( val.class === 'building') {
-              label = 'Adresse:';
+              label = I18n.t('search.lookup.address');
             }
             var href = url+'?address='+val.display_name+'&lat='+val.lat+'&lon='+val.lon;
 
@@ -214,7 +214,7 @@
           }).appendTo( "#selection" );
 
           console.log( "Success" );
-          $('#selection-hint').html("<p>Please select one result below (or type in another address).</p>");
+          $('#selection-hint').html("<p>" + I18n.t('search.lookup.success_result') +  "</p>");
           $('#selection-hint').addClass('active');
         }).done(function() {
           $('.nominatim_results a').on('click', function(e){
@@ -235,7 +235,7 @@
           });
         }).fail(function() {
           console.log( "error" );
-          $('#selection-hint').html("<p> :( Nothing found. Please try another input.</p>");
+          $('#selection-hint').html("<p>" + I18n.t('search.lookup.nothing_found') +  "</p>");
           $('#selection-hint').addClass('active');
         }).always(function() {
           console.log( "Complete" );

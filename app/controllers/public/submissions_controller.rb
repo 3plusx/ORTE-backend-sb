@@ -48,7 +48,7 @@ class Public::SubmissionsController < ApplicationController
     respond_to do |format|
       if @submission.save
         session[:submission_id] = @submission.id
-        format.html { redirect_to submission_new_place_path(locale: params[:locale], submission_id: @submission.id, layer_id: layer_from_id), notice: 'Submission was successfully created.' }
+        format.html { redirect_to submission_new_place_path(locale: params[:locale], submission_id: @submission.id, layer_id: layer_from_id), notice: t('activerecord.messages.models.submission.created') }
       else
         format.html { render :new }
       end

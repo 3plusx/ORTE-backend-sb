@@ -15,6 +15,8 @@
 //= require jquery-ui
 //= require jquery-ui/widgets/sortable
 //= require foundation
+//= require i18n
+//= require i18n/translations
 //= require_directory ./public
 //= require_tree .
 //= require leaflet/dist/leaflet
@@ -29,6 +31,7 @@
 // $(document).on('turbolinks:load', function() {
   $(function() {
     $(document).foundation();
+    I18n.locale = $('body').data('locale')
 
     setTimeout(function(){
       $('#flash').slideUp(4000);

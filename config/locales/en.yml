@@ -11,15 +11,24 @@ en:
   layouts:
     navigation:
       sign_out: Sign out
+  search:
+    lookup:
+      intro: "How to map: Search an address with the field above by adding your home city name."
+      address: "Adresse:"
+      no_input: <strong>No input!</strong> Please type in a complete address ('Street Number, City')
+      too_short: <strong>Input too short.</strong> Please type in a complete address ('Street Number, City')
+      no_result: Nothing found. Please try another adress!  (Type 'Street Number, City')
+      success_result: Please select one result below (or type in another address).
+      nothing_found: :( Nothing found. Please try another input.
   activerecord:
     messages:
       models:
         submission:
-          created: Submission was successfully created.
+          created: Your data has been saved (Step 1).
         place:
-          created: Place was successfully created.
+          created: Your data has been saved (Step 2).
         image:
-          created: Your image has been saved
+          created: Your contribution has been saved.
     errors:
       models:
         submission:
