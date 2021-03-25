@@ -1,0 +1,121 @@
+// Place all the styles related to the public/submissions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+body#submissions {
+  background-color: white;
+
+
+  main {
+    position: static;
+    width: 75%;
+    min-width: 700px;
+    margin: 20px auto;
+  }
+}
+#submissions {
+  #form-wrapper {
+    background-color: white;
+    border: 2px solid black;
+
+    h1,
+    h2,
+    h3 {
+      color: #1e5365;
+    }
+
+    hr {
+      border-bottom: 2px solid #aaa;
+      width: 80%;
+      margin: 40px auto;
+
+    }
+
+    button.secondary, .button.secondary {
+        background-color: white;
+        border: 1px solid #bbb;
+        color: #777 !important;
+        margin-right: 10px;
+    }
+    .button.secondary.active,
+    button.secondary:hover, .button.secondary:hover {
+        border: 1px solid #333;
+        color: #333 !important;
+    }
+    .breadcrumbs {
+      margin: 0 0 0 0;
+      li {
+        font-size: 1rem;
+        color: #777;
+        a {
+          color: #777;
+        }
+      }
+      li.current {
+        font-size: 1rem;
+        color: #c6c600;
+        a {
+          color: #c6c600;
+        }
+      }
+    }
+    .form-actions input.button[type="submit"] {
+      background-color: #1e5365;
+    }
+    input[type="checkbox"] {
+      margin: 0.2rem 0.5rem 0 0;
+    }
+    .place_address {
+      width: 100%;
+      input[type="text"] {
+        margin: 0;
+      }
+    }
+    #place_teaser_counter.warning { color: #c00; }
+    .response-list {
+      position: absolute;
+      background-color: white;
+      border: 1px solid #ccc;
+      margin-top: 0px;
+    }
+    .thumbnail {
+      max-width: 300px;
+    }
+    .callout#preview {
+      border: none;
+      background-color: rgba(224, 223, 216, 0.75);
+    }
+
+    .preview:before {
+      float: left;
+      margin-right: 10px;
+      position: absolute;
+      left: -20px;
+      margin-top: 2px;
+      font-family: "foundation-icons";
+    }
+    .preview.active:before {
+      content: "\f10b";
+    }
+    .preview.todo {
+      color: #aaa;
+    }
+    .preview.todo:before {
+      content: "\f1ee";
+      content: "\2014";
+    }
+    .preview.done:before {
+      content: "\f126";
+    }
+  }
+  .form-actions {
+      margin: 15px 15px 0;
+  }
+  main {
+    margin: 65px 20px 0 20px;
+  }
+
+  footer {
+    background-color: white;
+  }
+}

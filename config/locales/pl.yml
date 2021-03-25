@@ -1,0 +1,38 @@
+---
+pl:
+  time:
+    formats:
+      day_nr: "%d."
+      daydate: "%d.%m.%Y"
+      default: "%d.%m.%Y, %H:%M"
+  date:
+    formats:
+      default: "%d.%m.%Y"
+  layouts:
+    navigation:
+      sign_out: Wyloguj się
+  activerecord:
+    messages:
+      models:
+        submission:
+          created: Wpis został wysłany z sukcesem.
+        place:
+          created: Podana lokalizacja.
+        image:
+          created: Twoje zdjęcie zostało zapisane.
+    errors:
+      models:
+        submission:
+          attributes:
+            name:
+              blank: Podanie imienia i nazwiska jest obowiązkowe.
+        image:
+          attributes:
+            title:
+              blank: Wymagany opis zdjęcia.
+  errors:
+    messages:
+      accepted: Zgoda obowiązkowa
+      blank: Obowiązkowe
+      present: Pozostaje wolne.
+      inclusion: Zgoda obowiązkowa

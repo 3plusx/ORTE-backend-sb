@@ -1,0 +1,19 @@
+.grid-x.grid-padding-x.align-center
+  .large-10.large-offset-1.medium-12.cell.float-right
+    %nav(aria-label="You are here:" role="navigation")
+      %ul.breadcrumbs
+        - [ t('simple_form.form_menu.submission'),t('simple_form.form_menu.place'),t('simple_form.form_menu.image')].each_with_index do |item, local_index|
+          - if(local_index == menu_index)
+            %li{ :class => 'current' }
+              = (local_index+1)
+              = item
+          - elsif (local_index < menu_index)
+            %li{ :class => ''}
+              %a{'href'=>'#'}
+                = (local_index+1)
+                = item
+          - else
+            %li{ :class => 'disabled' }
+              = (local_index+1)
+              = item
+%hr

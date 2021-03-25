@@ -15,6 +15,7 @@
 //= require jquery-ui
 //= require jquery-ui/widgets/sortable
 //= require foundation
+//= require_directory ./public
 //= require_tree .
 //= require leaflet/dist/leaflet
 //= require leaflet.markercluster/dist/leaflet.markercluster
@@ -30,7 +31,7 @@
     $(document).foundation();
 
     setTimeout(function(){
-      $('#flash').slideUp(2000);
+      $('#flash').slideUp(4000);
     }, 3500);
 
       $('#place_tag_list').select2({
@@ -146,6 +147,8 @@
     // ---------------
     // baselayer map
 
+    if ( $('#map').length ) {
+
     var map = L.map('map', {
         zoomControl: false,
         layers: [marker_meta_layers],
@@ -257,7 +260,7 @@
 
 
     map.addLayer(marker_meta_layers);
-
+    }
 
 
 

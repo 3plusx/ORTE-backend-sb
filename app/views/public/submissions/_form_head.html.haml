@@ -1,0 +1,26 @@
+
+.grid-x.grid-padding-x.align-center
+  .large-10.large-offset-1.medium-12.cell.float-right
+    %img.float-right{:src => asset_path("3px_ut_76_remembrance_draft_header.jpg"), "width" => '800px'}
+.grid-x.grid-padding-x
+  .large-10.large-offset-1.medium-12.cell
+    %h1
+      = t('simple_form.form_intro.title')
+.grid-x.grid-padding-x
+  .cell.medium-12
+    = render 'layouts/messages'
+%hr
+.grid-x.grid-padding-x
+  .large-10.large-offset-1.medium-12.cell
+    %nav.menu
+      - [{name: 'english', code: 'en'}, {name: 'deutsch', code: 'de'}, {name: 'français', code: 'fr'}, {name: 'italiano', code: 'it', }, {name: 'nederlands', code: 'nl'}, {name: 'polski', code: 'pl'}].each do |language|
+
+        - klass = 'button secondary'
+        - if params[:locale] == language[:code]
+          - klass = "#{klass} active"
+        = link_to language[:name], current_page_params.merge(layer_id: params[:layer_id],place_id: params[:place_id], locale: language[:code]), class: "#{klass}"
+%hr
+.grid-x.grid-padding-x
+  .large-10.large-offset-1.medium-12.cell
+    = simple_format(t('simple_form.form_intro.text'))
+%hr

@@ -1,0 +1,13 @@
+#form-wrapper.large-wrapper
+  = render 'form_head'
+  .grid-x.grid-padding-x
+    .large-10.large-offset-1.medium-12.cell
+      %h1 
+        Thank you for your submission
+      %h2
+        All submissions will be published on 31.03.2021
+  .grid-x.grid-padding-x
+    .large-10.large-offset-1.medium-12.cell
+  .grid-x.grid-padding-x
+    .large-6.large-offset-3.medium-12.cell
+      = render partial: 'form_preview', locals: { :index => -1 }

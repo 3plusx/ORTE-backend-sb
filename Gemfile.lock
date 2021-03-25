@@ -213,6 +213,7 @@ GEM
     listen (3.4.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    locales_export_import (0.5.0)
     loofah (2.9.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -470,6 +471,7 @@ DEPENDENCIES
   kaminari
   letter_opener
   listen (~> 3)
+  locales_export_import
   mini_racer
   mysql2
   passenger

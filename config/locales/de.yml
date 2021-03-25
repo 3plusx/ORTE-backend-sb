@@ -1,0 +1,41 @@
+---
+de:
+  time:
+    formats:
+      day_nr: "%d."
+      daydate: "%d.%m.%Y"
+      default: "%d.%m.%Y, %H:%M"
+  date:
+    formats:
+      default: "%d.%m.%Y"
+  layouts:
+    navigation:
+      sign_out: Abmelden
+  activerecord:
+    messages:
+      models:
+        submission:
+          created: Eingabe des Beitrags erfolgreich.
+        place:
+          created: Eingabe des Standorts erfolgreich.
+        image:
+          created: Ihre Abbildung wurde gespeichert
+    errors:
+      models:
+        submission:
+          attributes:
+            name:
+              blank: Eingabe des Namen ist erforderlich
+            email:
+              taken: Email bereits verwendet
+        image:
+          attributes:
+            title:
+              blank: Bildbeschreibung erforderlich.
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: Zustimmung erforderlich
+      blank: Pflichtfeld
+      present: Dieses Feld bleibt frei
+      inclusion: Zustimmung erforderlich

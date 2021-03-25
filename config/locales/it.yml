@@ -1,0 +1,38 @@
+---
+it:
+  time:
+    formats:
+      day_nr: "%d."
+      daydate: "%d.%m.%Y"
+      default: "%d.%m.%Y, %H:%M"
+  date:
+    formats:
+      default: "%d.%m.%Y"
+  layouts:
+    navigation:
+      sign_out: Disconnettiti
+  activerecord:
+    messages:
+      models:
+        submission:
+          created: L‘inserimento del contributo è effettuato
+        place:
+          created: Posizione inserita con successo
+        image:
+          created: La tua immagine è stata salvata
+    errors:
+      models:
+        submission:
+          attributes:
+            name:
+              blank: È necessario mettere il nome
+        image:
+          attributes:
+            title:
+              blank: È richiesta la descrizione dell'immagine.
+  errors:
+    messages:
+      accepted: È necessario il tuo consenso
+      blank: Campo obbligatorio
+      present: Questo spazio resta vuoto
+      inclusion: È necessario il tuo consenso
