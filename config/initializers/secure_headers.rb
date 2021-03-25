@@ -45,7 +45,6 @@ SecureHeaders::Configuration.default do |config|
   if Rails.env.development? || Rails.env.test? || Rails.env.localtest? || Rails.env.staging?
     config.csp = default_csp_config.merge({
         default_src: %w('self'),
-        script_src: %w('self' 'unsafe-inline'),
         font_src: %w('self' 'unsafe-inline'  https://staging.orte.link https://orte.link),
         script_src: %w('self' 'unsafe-inline'  https://staging.orte.link https://orte.link),
         block_all_mixed_content: false,
