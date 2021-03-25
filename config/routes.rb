@@ -54,10 +54,14 @@ Rails.application.routes.draw do
       get :new_image, :controller => "public/submissions", :action => 'new_image'
       post :create_image, :controller => "public/submissions", :action => 'create_image'
       get :finished, :controller => "public/submissions", :action => 'finished'
-
     end
   end
 
+
+  constraints subdomain: 'submissions-staging.stiftung-lager-sandbostel.de' do
+
+
+  end
   namespace :public do
     resources :maps, only: [:show, :index], :defaults => { :format => :json } do
       resources :layers, only: [:show], :defaults => { :format => :json }
