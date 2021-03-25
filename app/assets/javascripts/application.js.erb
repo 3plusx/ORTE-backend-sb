@@ -31,7 +31,7 @@
     $(document).foundation();
 
     setTimeout(function(){
-      $('#flash').slideUp(2000);
+      $('#flash').slideUp(4000);
     }, 3500);
 
       $('#place_tag_list').select2({
@@ -148,7 +148,7 @@
     // baselayer map
 
     if ( $('#map').length ) {
-    
+
     var map = L.map('map', {
         zoomControl: false,
         layers: [marker_meta_layers],

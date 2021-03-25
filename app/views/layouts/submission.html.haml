@@ -39,13 +39,7 @@
     - id = "#{controller_name.parameterize}"
 
   %body{:id=>"#{id}", :class=>"#{klass}"}
-    %header
-      = #render 'layouts/navigation'
-
     %main{role: "main"}
-      .grid-x
-        .cell.medium-12
-          = render 'layouts/messages'
       .grid-x
         .cell.medium-12
           = yield
@@ -55,7 +49,7 @@
           = render partial: "layouts/version"
           = render partial: "layouts/credits"
         .cell.large-2.medium-4.small-6.text-right
-          
+
           - if user_signed_in?
             %span.show-for-small-only
               %a{:href => settings_path, :title => 'Your Settings'}
