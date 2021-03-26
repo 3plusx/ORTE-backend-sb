@@ -27,6 +27,8 @@
                 .image.ui-state-default.thumbnail{id: "image_#{img.id}"}
                   - if img.file.attached?
                     = image_tag url_for(img.file)
+                  %p.image_title
+                    = img.title
           - else
             .grid-x
               .image.ui-state-default.thumbnail{id: "image_default"}

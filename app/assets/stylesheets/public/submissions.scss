@@ -11,12 +11,26 @@ body#submissions {
     width: 75%;
     min-width: 700px;
     margin: 20px auto;
+
+    @media screen and (max-width: 39.9375em) {
+      width: auto;
+      min-width: auto;
+      margin: 5px auto;
+
+    }
   }
+
 }
 #submissions {
   #form-wrapper {
     background-color: white;
     border: 2px solid black;
+
+    @media screen and (max-width: 39.9375em) {
+
+      border: 0 solid black;
+
+    }
 
     h1,
     h2,
@@ -36,6 +50,7 @@ body#submissions {
         border: 1px solid #bbb;
         color: #777 !important;
         margin-right: 10px;
+        margin-bottom: 10px;
     }
     .button.secondary.active,
     button.secondary:hover, .button.secondary:hover {
@@ -81,6 +96,16 @@ body#submissions {
     .thumbnail {
       max-width: 300px;
     }
+    .accordion-title {
+        position: static;
+        padding: 1.25rem 1rem;
+        font-size: 1rem;
+        background: white;
+        p {
+          margin-bottom: 0;
+        }
+    }
+
     .callout#preview {
       border: none;
       background-color: rgba(224, 223, 216, 0.75);
@@ -109,10 +134,7 @@ body#submissions {
     }
   }
   .form-actions {
-      margin: 15px 15px 0;
-  }
-  main {
-    margin: 65px 20px 0 20px;
+      margin: 15px 15px 45px;
   }
 
   footer {
