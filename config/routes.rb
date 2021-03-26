@@ -2,6 +2,12 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  if Rails.env.production?
+    root :to => 'public/submissions#new', locale: 'de', layer_id: 2, constraints: { host: 'submissions.stiftung-lager-sandbostel.de'  }
+  else
+    root :to => 'public/submissions#new', locale: 'de', layer_id: 2, constraints: { host: 'submissions-staging.stiftung-lager-sandbostel.de'  }
+  end
+
   root 'start#index'
 
   get 'info', to: 'start#info'
@@ -54,10 +60,14 @@ Rails.application.routes.draw do
       get :new_image, :controller => "public/submissions", :action => 'new_image'
       post :create_image, :controller => "public/submissions", :action => 'create_image'
       get :finished, :controller => "public/submissions", :action => 'finished'
-
     end
   end
 
+
+  constraints subdomain: 'submissions-staging.stiftung-lager-sandbostel.de' do
+
+
+  end
   namespace :public do
     resources :maps, only: [:show, :index], :defaults => { :format => :json } do
       resources :layers, only: [:show], :defaults => { :format => :json }
