@@ -3,7 +3,8 @@
     if( $('#submissions').length > 0 ){
 
       // hide image preview unless user chooses to provide an image
-      $('#new_image #place_image_placeholder').hide();
+      $('#place_image_placeholder').hide();
+      $('#step_finished #place_image_placeholder').show();
       if (( $('#new_image #image_title').length > 0 ) &&  ( $('#image_title')[0].value.length > 0 )) {
         console.log( $('#image_title')[0].value.length );
         $('#place_image_placeholder').show();
@@ -17,7 +18,7 @@
         }
       });
       // setup handler for form field changes
-      var form_fields = ['submission_name', 'place_location', 'place_teaser', 'place_address'];
+      var form_fields = ['submission_name', 'place_location', 'place_teaser', 'place_address', 'image_title'];
       form_fields.forEach(element => {
         if( $('#' + element).length > 0 && $('#' + element + '_receiver').length > 0 ) {
           // check on page load

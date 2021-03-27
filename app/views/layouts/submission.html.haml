@@ -5,7 +5,7 @@
     %meta{ name: 'robots', content: 'noindex, nofollow' }
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
 
-    - title = content_for?(:title) ? "#{yield(:title)} — #{Settings.app_name}" : "#{Settings.app_name}"
+    - title = content_for?(:title) ? "#{yield(:title)}" : "#{Settings.app_name}"
     %title= title
 
     %meta{property:"og:type", content:"website"}
@@ -38,7 +38,7 @@
   - if controller_name
     - id = "#{controller_name.parameterize}"
 
-  %body{:id=>"#{id}", :class=>"#{klass}", :data => {locale: "#{I18n.locale}"}} 
+  %body{:id=>"#{id}", :class=>"#{klass}", :data => {locale: "#{I18n.locale}"}}
     %main{role: "main"}
       .grid-x
         .cell.medium-12

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SubmissionsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[new create new_place create_place new_image create_image finished]
+  skip_before_action :authenticate_user!, only: %i[index new create new_place create_place new_image create_image finished]
   layout 'submission'
 
   around_action :switch_locale
@@ -9,6 +9,8 @@ class Public::SubmissionsController < ApplicationController
   SUBMISSION_STATUS_STEP1 = 1
   SUBMISSION_STATUS_STEP2 = 2
   SUBMISSION_STATUS_STEP3 = 3
+
+  def index; end
 
   def switch_locale(&action)
     locale = params[:locale] || I18n.default_locale
@@ -21,20 +23,21 @@ class Public::SubmissionsController < ApplicationController
   end
 
   def new
-    return unless layer_from_id.positive?
+    @layer = Layer.find_by_id(layer_from_id)
+    if @layer && @layer.public_submission
 
-    @layer = Layer.find(layer_from_id)
-    return unless @layer.public_submission
+      @submission = Submission.new
+      @submission.name = params[:name]
+      @submission.locale = params[:locale]
+      @submission.email = params[:email]
+      @submission.privacy = params[:privacy]
+      @submission.rights = params[:rights]
 
-    @submission = Submission.new
-    @submission.name = params[:name]
-    @submission.locale = params[:locale]
-    @submission.email = params[:email]
-    @submission.privacy = params[:privacy]
-    @submission.rights = params[:rights]
-
-    @map = @layer.map
-    @user = User.new
+      @map = @layer.map
+      @user = User.new
+    else
+      redirect_to submissions_path
+    end
   end
 
   def create
