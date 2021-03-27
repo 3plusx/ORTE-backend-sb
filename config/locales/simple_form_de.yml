@@ -1,13 +1,13 @@
 ---
 de:
   simple_form:
-    'yes': Ja
-    'no': Nein
+    "yes": Ja
+    "no": Nein
     required:
       text: Pflichtfeld
       mark: "*"
     error_notification:
-      default_message: 'Es sind Fehler aufgetreten:'
+      default_message: "Es sind Fehler aufgetreten:"
     preview:
       intro: Vorschau Ihres Beitrages
     form_intro:
@@ -20,29 +20,40 @@ de:
         Später eingereichten Beiträge werden ergänzt. Das Eingabeformular bleibt bis zum 9. Mai online und die bis zum Ende der Frist eingereichten Beiträge werden ebenfalls auf der Weltkarte ergänzt. So entsteht zum 76. Jahrestag der Befreiung des Stalag X B ein digitales Denkmal, das zeigt, wie global die Erinnerung an Sandbostel ist.
 
         Wir freuen uns auf Ihre Beiträge - vielen Dank!
-
-        * Vielen Dank für Ihre Beteiligung. Nach einer redaktionellen Prüfung wird der Beitrag ab Mitte April auf www.sandbostel76.de veröffentlicht. Beiträge die später eingereicht werden, werden nach der Prüfung direkt hochgeladen.
+    form_menu:
+      submission: "Ihre Daten"
+      place: "Ort/Beitrag"
+      image: "Bild/Medium"
+    form_finished:
+      title: Vielen Dank für Ihre Beteiligung.
+      subtitle: Nach einer redaktionellen Prüfung wird der Beitrag ab Mitte April auf <a href="https://www.sandbostel76.de">www.sandbostel76.de</a> veröffentlicht. Beiträge die später eingereicht werden, werden nach der Prüfung direkt hochgeladen.
     labels:
       title: Name (oder Organisation)
       teaser: Ihr Beitrag
       email: E-Mail
       location: Ort
-      image: Bild hochladen
+      image: Wollen Sie ein Bild hochladen?
       image_description: Bildbeschreibung
-      rights: Hiermit erteile ich der Gedenkstätte Lager Sandbostel die Erlaubnis,
+      rights:
+        Hiermit erteile ich der Gedenkstätte Lager Sandbostel die Erlaubnis,
         meinen Beitrag (Text und Bild) auf ihrer Website zu veröffentlichen. Ich bestätige,
         dass ich im Besitz der Urheberrechte bin.
-      privacy: Ich bestätige, dass ich die Datenschutzerklärung gelesen und verstanden
+      privacy:
+        Ich bestätige, dass ich die Datenschutzerklärung gelesen und verstanden
         habe.
+      button_step1: Weiter zu Schritt 2
+      button_step2: Weiter zu Schritt 3
       submit: Beitrag einreichen
     hints:
       title: Ihr Name wird veröffentlicht.
       teaser: Text mit einer Länge von bis zu 500 Zeichen.
       email: Ihre E-Mail-Adresse wird nicht veröffentlicht!
-      location: Ihr Standort wird zusammen mit Ihrem Namen veröffentlicht. Bitte geben
+      location:
+        Ihr Standort wird zusammen mit Ihrem Namen veröffentlicht. Bitte geben
         Sie die Stadt (oder den Ort) sowie das Land an.
-      image: 'Bitte nur die Formate JPEG, GIF und PNG verwenden. Maximale Größe: 5
-        MB.'
+      image:
+        "Bitte nur die Formate JPEG, GIF und PNG verwenden. Maximale Größe: 5
+        MB."
       image_description: Beschreiben Sie die Abbildung in wenigen Worten.
     placeholders:
       title: Ihr Name und/oder Ihre Organisation

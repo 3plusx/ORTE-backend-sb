@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_11_222840) do
+ActiveRecord::Schema.define(version: 2021_03_25_120134) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -136,6 +136,7 @@ ActiveRecord::Schema.define(version: 2021_03_11_222840) do
     t.bigint "place_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0, null: false
     t.index ["place_id"], name: "index_submissions_on_place_id"
   end
 
@@ -199,7 +200,6 @@ ActiveRecord::Schema.define(version: 2021_03_11_222840) do
     t.index ["place_id"], name: "index_videos_on_place_id"
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "icons", "iconsets"
   add_foreign_key "images", "places"
   add_foreign_key "layers", "maps"

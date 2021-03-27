@@ -37,7 +37,7 @@
               %p.hint= t('simple_form.hints.location')
             #selection-hint
               %p
-                How to map: Search an address with the field above by adding your home city name.
+                = t('search.lookup.intro')
 
 
       .grid-x.grid-padding-x
@@ -59,4 +59,4 @@
   .grid-x
     .large-11.medium-12.small-12.cell
       .form-actions.text-right
-        = f.button :submit, t('simple_form.labels.submit'), :class => "button"
+        = f.button :submit, t('simple_form.labels.button_step2'), :class => "button"

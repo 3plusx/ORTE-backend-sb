@@ -15,7 +15,8 @@
           %ul.accordion{"id" => 'image_accordion',"data-accordion"=>true, "data-allow-all-closed"=>"true"}
             %li.accordion-item{"id" => "image_form_item", "data-accordion-item"=>true}
               %a.accordion-title{"href"=>"#"}
-                Wollen Sie ein Bild hochladen?
+                %p
+                  = t('simple_form.labels.image')
               .accordion-content{"data-tab-content"=>true}
                 .form-inputs
                   = f.input :file, as: :file, input_html: { accept: ('image'), multiple: false }, label: t('simple_form.labels.image')
