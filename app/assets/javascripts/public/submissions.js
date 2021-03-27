@@ -137,7 +137,7 @@
       //example
       // https://nominatim.openstreetmap.org/search?q=135+pilkington+avenue,+birmingham&format=xml&polygon=1&addressdetails=1
       var nominatium_url = 'https://nominatim.openstreetmap.org/search';
-      var nominatium_url_params = '&format=json&addressdetails=1&locale=de'
+      var nominatium_url_params = '&format=json&addressdetails=1&featuretype=city'
 
       var request = $.getJSON( nominatium_url+"?q="+address+nominatium_url_params, function( data ) {
 
@@ -219,6 +219,7 @@
           $('#selection-hint').addClass('active');
         }).done(function() {
           $('.nominatim_results a').on('click', function(e){
+
             console.log( "Click" );
             e.preventDefault();
             var lat = $(this).data('lat');
