@@ -6,8 +6,7 @@
   = f.input :lon, :as => :hidden, :input_html => { :value => @place.lon }
   = f.input :zip, :as => :hidden, :input_html => { :value => @place.zip }
   = f.input :city, :as => :hidden, :input_html => { :value => @place.city }
-
-  = render 'form_head'
+  = render partial: 'form_head', locals: { :menu_index => 1 }
   = render partial: 'form_menu', locals: { :menu_index => 1 }
   .grid-x.grid-padding-x
     .large-6.medium-12.cell

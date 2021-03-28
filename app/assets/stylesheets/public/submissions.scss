@@ -5,7 +5,6 @@
 body#submissions {
   background-color: white;
 
-
   main {
     position: static;
     width: 75%;
@@ -16,10 +15,8 @@ body#submissions {
       width: auto;
       min-width: auto;
       margin: 5px auto;
-
     }
   }
-
 }
 #submissions {
   #form-wrapper {
@@ -27,9 +24,7 @@ body#submissions {
     border: 2px solid black;
 
     @media screen and (max-width: 39.9375em) {
-
       border: 0 solid black;
-
     }
 
     h1,
@@ -42,20 +37,25 @@ body#submissions {
       border-bottom: 2px solid #aaa;
       width: 80%;
       margin: 40px auto;
-
     }
 
-    button.secondary, .button.secondary {
-        background-color: white;
-        border: 1px solid #bbb;
-        color: #777 !important;
-        margin-right: 10px;
-        margin-bottom: 10px;
+    button.secondary,
+    .button.secondary {
+      background-color: white;
+      border: 1px solid #bbb;
+      color: #777 !important;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+
+    #place_addresslookup_button {
+      margin-bottom: 0px;
     }
     .button.secondary.active,
-    button.secondary:hover, .button.secondary:hover {
-        border: 1px solid #333;
-        color: #333 !important;
+    button.secondary:hover,
+    .button.secondary:hover {
+      border: 1px solid #333;
+      color: #333 !important;
     }
     .breadcrumbs {
       margin: 0 0 0 0;
@@ -86,24 +86,27 @@ body#submissions {
         margin: 0;
       }
     }
-    #place_teaser_counter.warning { color: #c00; }
+    #place_teaser_counter.warning {
+      color: #c00;
+    }
     .response-list {
       position: absolute;
       background-color: white;
       border: 1px solid #ccc;
       margin-top: 0px;
+      z-index: 100;
     }
     .thumbnail {
       max-width: 300px;
     }
     .accordion-title {
-        position: static;
-        padding: 1.25rem 1rem;
-        font-size: 1rem;
-        background: white;
-        p {
-          margin-bottom: 0;
-        }
+      position: static;
+      padding: 1.25rem 1rem;
+      font-size: 1rem;
+      background: white;
+      p {
+        margin-bottom: 0;
+      }
     }
 
     .callout#preview {
@@ -134,7 +137,7 @@ body#submissions {
     }
   }
   .form-actions {
-      margin: 15px 15px 45px;
+    margin: 15px 15px 45px;
   }
 
   footer {
