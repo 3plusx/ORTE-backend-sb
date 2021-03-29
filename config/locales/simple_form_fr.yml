@@ -1,17 +1,17 @@
 ---
 fr:
   simple_form:
-    'yes': oui
-    'no': non
+    "yes": oui
+    "no": non
     required:
       text: champ requis
       mark: "*"
     error_notification:
-      default_message: 'Une erreur est survenue:'
+      default_message: "Une erreur est survenue:"
     preview:
       intro: Aperçu de votre contribution
     form_intro:
-      title: Commémoration du 76e anniversaire de la libération du Stalag X B Sandbostel
+      title: Commémoration du <nobr>76e anniversaire</nobr> de la libération du <nobr>Stalag X B Sandbostel</nobr>
       text: |-
         Cette année également, le 29 avril, nous ne pouvons pas commémorer ensemble la libération du Stalag X B et rendre hommage à ceux qui ont souffert et qui sont morts à Sandbostel. Nous célébrerons à nouveau l'événement commémoratif sous forme numérique. À cette fin, à l'occasion du 76ème anniversaire de la libération, un film sera publié avec les salutations de la politique et de la diplomatie, des contributions des écoles voisines et des discours de survivants et de proches. Il existe également un autre projet commémoratif auquel vous pouvez participer activement.
         Vous pouvez utiliser un formulaire pour formuler vos réflexions sur le jour de la libération du Stalag X B ou sur la personne à qui vous voulez rendre hommage. Vous pouvez également joindre une photo de votre proche, de vous-même et de votre famille, un document, un dessin ou toute autre illustration qui vous tient à cœur. Les textes et les images seront publiés avec votre lieu de résidence sur une carte interactive sur <a href="https://www.sandbostel76.de">www.sandbostel76.de</a> à partir de la mi-avril.
@@ -20,7 +20,8 @@ fr:
         Nous attendons vos contributions avec impatience - merci beaucoup!
     form_finished:
       title: Merci pour votre participation.
-      subtitle: Après une vérification éditoriale, votre article sera publié sur <a
+      subtitle:
+        Après une vérification éditoriale, votre article sera publié sur <a
         href="https://www.sandbostel76.de">www.sandbostel76.de</a> à partir de la
         mi-avril. Les textes soumis ultérieurement seront téléchargés directement.
     labels:
@@ -30,7 +31,8 @@ fr:
       location: lieu de résidence
       image: Souhaitez-vous télécharger une image?
       image_description: description de l'image
-      rights: J'autorise le mémorial du camp de Sandbostel à publier ma contribution
+      rights:
+        J'autorise le mémorial du camp de Sandbostel à publier ma contribution
         (texte et image) sur son site Internet. Je confirme que je possède les droits
         d'auteur.
       privacy: Je confirme avoir lu et accepté les termes de la politique de confidentialité.
@@ -41,10 +43,12 @@ fr:
       title: votre nom sera publié.
       teaser: Texte de 500 caractères maximum.
       email: Votre adresse email ne sera pas publiée!
-      location: Votre emplacement sera publié avec votre nom. Veuillez entrer la ville
+      location:
+        Votre emplacement sera publié avec votre nom. Veuillez entrer la ville
         (ou village) et le pays.
-      image: 'Veuillez n''utiliser que les formats JPEG, GIF et PNG. Taille maximale:
-        5 Mo.'
+      image:
+        "Veuillez n'utiliser que les formats JPEG, GIF et PNG. Taille maximale:
+        5 Mo."
       image_description: Décrivez l'illustration en quelques mots.
       image_switch: Télécharger un fichier image?
     placeholders:

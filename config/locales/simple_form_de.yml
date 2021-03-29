@@ -1,17 +1,17 @@
 ---
 de:
   simple_form:
-    'yes': Ja
-    'no': Nein
+    "yes": Ja
+    "no": Nein
     required:
       text: Pflichtfeld
       mark: "*"
     error_notification:
-      default_message: 'Es sind Fehler aufgetreten:'
+      default_message: "Es sind Fehler aufgetreten:"
     preview:
       intro: Vorschau Ihres Beitrages
     form_intro:
-      title: Gedenken zum 76. Jahrestag der Befreiung des Stalag X B Sandbostel
+      title: Gedenken zum <nobr>76. Jahrestag</nobr> der Befreiung des <nobr>Stalag X B Sandbostel</nobr>
       text: |
         Auch in diesem Jahr können wir am 29. April nicht gemeinsam in Sandbostel an die Befreiung des Stalag X B erinnern und derer gedenken, die hier gelitten haben und gestorben sind. Wir werden die Gedenkveranstaltung erneut in einer digitalen Form begehen. Dazu wird am Jahrestag der Befreiung ein Film mit Grußworten aus Politik und Diplomatie, Beiträgen von Jugendlichen, sowie Reden von Überlebenden und Angehörigen veröffentlicht. Auch gibt es wieder ein partizipatives Gedenkprojekt, an dem Sie, die sonst vielleicht nach Sandbostel gekommen wären, sich aktiv beteiligen können.
 
@@ -26,7 +26,8 @@ de:
       image: Bild/Medium
     form_finished:
       title: Vielen Dank für Ihre Beteiligung.
-      subtitle: Nach einer redaktionellen Prüfung wird der Beitrag ab Mitte April
+      subtitle:
+        Nach einer redaktionellen Prüfung wird der Beitrag ab Mitte April
         auf <a href="https://www.sandbostel76.de">www.sandbostel76.de</a> veröffentlicht.
         Beiträge die später eingereicht werden, werden nach der Prüfung direkt hochgeladen.
     labels:
@@ -36,10 +37,12 @@ de:
       location: Ort
       image: Wollen Sie ein Bild hochladen?
       image_description: Bildbeschreibung
-      rights: Hiermit erteile ich der Gedenkstätte Lager Sandbostel die Erlaubnis,
+      rights:
+        Hiermit erteile ich der Gedenkstätte Lager Sandbostel die Erlaubnis,
         meinen Beitrag (Text und Bild) auf ihrer Website zu veröffentlichen. Ich bestätige,
         dass ich im Besitz der Urheberrechte bin.
-      privacy: Ich bestätige, dass ich die Datenschutzerklärung gelesen und verstanden
+      privacy:
+        Ich bestätige, dass ich die Datenschutzerklärung gelesen und verstanden
         habe.
       button_step1: Weiter zu Schritt 2
       button_step2: Weiter zu Schritt 3
@@ -50,10 +53,12 @@ de:
       title: Ihr Name wird veröffentlicht.
       teaser: Text mit einer Länge von bis zu 500 Zeichen.
       email: Ihre E-Mail-Adresse wird nicht veröffentlicht!
-      location: Ihr Standort wird zusammen mit Ihrem Namen veröffentlicht. Bitte geben
+      location:
+        Ihr Standort wird zusammen mit Ihrem Namen veröffentlicht. Bitte geben
         Sie die Stadt (oder den Ort) sowie das Land an.
-      image: 'Bitte nur die Formate JPEG, GIF und PNG verwenden. Maximale Größe: 5
-        MB.'
+      image:
+        "Bitte nur die Formate JPEG, GIF und PNG verwenden. Maximale Größe: 5
+        MB."
       image_description: Beschreiben Sie die Abbildung in wenigen Worten.
       image_switch: Ein Bild hochladen?
     placeholders:
