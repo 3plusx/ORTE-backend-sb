@@ -41,6 +41,8 @@ en:
       button_step1: Go to step 2
       button_step2: Go to step 3
       submit: Submit submission
+      start_again: Submit an other contribution
+      visit_site: Visit our website
     hints:
       title: Your name will be published
       teaser: A text with maximum of 500 chars.

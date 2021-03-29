@@ -44,6 +44,8 @@ de:
       button_step1: Weiter zu Schritt 2
       button_step2: Weiter zu Schritt 3
       submit: Beitrag einreichen
+      start_again: Einen weiteren Beitrag einreichen
+      visit_site: Besuchen Sie unsere Webseite
     hints:
       title: Ihr Name wird veröffentlicht.
       teaser: Text mit einer Länge von bis zu 500 Zeichen.
