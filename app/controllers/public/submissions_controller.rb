@@ -23,15 +23,19 @@ class Public::SubmissionsController < ApplicationController
   end
 
   def new
+    print 'here new'
     @layer = Layer.find_by_id(layer_from_id)
+    print @layer
     if @layer && @layer.public_submission
 
-      @submission = Submission.new
-      @submission.name = params[:name]
-      @submission.locale = params[:locale]
-      @submission.email = params[:email]
-      @submission.privacy = params[:privacy]
-      @submission.rights = params[:rights]
+        @submission = Submission.new
+        @submission.name = params[:name]
+        @submission.locale = params[:locale]
+        @submission.email = params[:email]
+        @submission.privacy = params[:privacy]
+        @submission.rights = params[:rights]
+        
+       # @url = submission_create_path(locale: params[:locale], layer_id:  @layer.id )
 
       @map = @layer.map
       @user = User.new
@@ -41,8 +45,13 @@ class Public::SubmissionsController < ApplicationController
   end
 
   def create
+    if(session[:submission_id] && session[:submission_id].positive?)
+      @submission = Submission.find(session[:submission_id])
+    end
+
     @submission = Submission.new(submission_params)
     @submission.status = SUBMISSION_STATUS_STEP1
+
     @layer = Layer.find(layer_from_id)
     return unless @layer.public_submission
 
@@ -58,6 +67,53 @@ class Public::SubmissionsController < ApplicationController
     end
   end
 
+  def edit
+    @layer = Layer.find_by_id(layer_from_id)
+    if @layer && @layer.public_submission
+
+      if(session[:submission_id] && session[:submission_id].positive? && session[:submission_id] == submission_from_id)
+        @submission = Submission.find(session[:submission_id])
+        @url = submission_create_path(locale: params[:locale], layer_id:  @layer.id, submission_id: @submission.id )
+      else  
+        @submission = Submission.new
+        @submission.name = params[:name]
+        @submission.locale = params[:locale]
+        @submission.email = params[:email]
+        @submission.privacy = params[:privacy]
+        @submission.rights = params[:rights]
+        
+        @url = submission_create_path(locale: params[:locale], layer_id:  @layer.id, submission_id: @submission.id )
+      end
+
+      @map = @layer.map
+      @user = User.new
+    else
+      redirect_to submissions_path
+    end
+  end
+
+  def update
+    if(session[:submission_id] && session[:submission_id].positive?)
+      @submission = Submission.find(session[:submission_id])
+    end
+
+    @submission = Submission.new(submission_params)
+    @submission.status = SUBMISSION_STATUS_STEP1
+
+    @layer = Layer.find(layer_from_id)
+    return unless @layer.public_submission
+
+    @map = @layer.map
+
+    respond_to do |format|
+      if @submission.save
+        session[:submission_id] = @submission.id
+        format.html { redirect_to submission_new_place_path(locale: params[:locale], submission_id: @submission.id, layer_id: layer_from_id), notice: t('activerecord.messages.models.submission.created') }
+      else
+        format.html { render :edit }
+      end
+    end
+  end
   def new_place
     return unless session[:submission_id].positive?
 

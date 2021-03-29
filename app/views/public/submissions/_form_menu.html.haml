@@ -2,7 +2,7 @@
   .large-10.large-offset-1.medium-12.cell.float-right
     %nav(aria-label="You are here:" role="navigation")
       %ul.breadcrumbs
-        - [ {:label => t('simple_form.form_menu.submission'), :href => submission_edit_path(layer_id: params[:layer_id], locale: params[:locale], submission_id: @submission.id)},{:label => t('simple_form.form_menu.place'), :href => '#'},{:label => t('simple_form.form_menu.image'), :href => '#'}].each_with_index do |item, local_index|
+        - [ {:label => t('simple_form.form_menu.submission'), :href => '/' + params[:locale] + '/submissions/new?layer_id=' + @layer.id.to_s},{:label => t('simple_form.form_menu.place'), :href => '#'},{:label => t('simple_form.form_menu.image'), :href => '#'}].each_with_index do |item, local_index|
           - if(local_index == menu_index)
             %li{ :class => 'current' }
               = (local_index+1)
