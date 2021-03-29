@@ -2,16 +2,22 @@
   .large-10.large-offset-1.medium-12.cell.float-right
     %nav(aria-label="You are here:" role="navigation")
       %ul.breadcrumbs
-        - [ {:label => t('simple_form.form_menu.submission'), :href => '/' + params[:locale] + '/submissions/new?layer_id=' + @layer.id.to_s},{:label => t('simple_form.form_menu.place'), :href => '#'},{:label => t('simple_form.form_menu.image'), :href => '#'}].each_with_index do |item, local_index|
+        - [ {:label => t('simple_form.form_menu.submission')},{:label => t('simple_form.form_menu.place')},{:label => t('simple_form.form_menu.image')}].each_with_index do |item, local_index|
           - if(local_index == menu_index)
             %li{ :class => 'current' }
               = (local_index+1)
               = item[:label]
           - elsif (local_index < menu_index)
             %li{ :class => ''}
-              %a{'href'=> item[:href]}
-                = (local_index+1)
-                = item[:label]
+              - if local_index == 0
+                %a{'href'=> submission_edit_path()}
+                  = (local_index+1)
+                  = item[:label]
+              - elsif local_index == 1
+                %a{'href'=> submission_edit_place_path()}
+                  = (local_index+1)
+                  = item[:label]
+
           - else
             %li{ :class => 'disabled' }
               = (local_index+1)

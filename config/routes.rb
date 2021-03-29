@@ -52,14 +52,22 @@ Rails.application.routes.draw do
   end
 
   scope "/:locale" do
-    resources :submissions, :controller => "public/submissions" do
-      get :new, :controller => "public/submissions", :action => 'new'
-      post :create, :controller => "public/submissions", :action => 'create'
-      get :new_place, :controller => "public/submissions", :action => 'new_place'
-      post :create_place, :controller => "public/submissions", :action => 'create_place'
-      get :new_image, :controller => "public/submissions", :action => 'new_image'
-      post :create_image, :controller => "public/submissions", :action => 'create_image'
-      get :finished, :controller => "public/submissions", :action => 'finished'
+    scope "/:layer_id" do
+      resources :submissions, :controller => "public/submissions" do
+        get :new, :controller => "public/submissions", :action => 'new'
+        post :create, :controller => "public/submissions", :action => 'create'    
+        get :edit, :controller => "public/submissions", :action => 'edit'
+        patch :update, :controller => "public/submissions", :action => 'update'
+        get :new_place, :controller => "public/submissions", :action => 'new_place'
+        post :create_place, :controller => "public/submissions", :action => 'create_place'
+        scope "/:place_id" do
+          get :edit_place, :controller => "public/submissions", :action => 'edit_place'
+          patch :update_place, :controller => "public/submissions", :action => 'update_place'
+          get :new_image, :controller => "public/submissions", :action => 'new_image'
+          post :create_image, :controller => "public/submissions", :action => 'create_image'
+          get :finished, :controller => "public/submissions", :action => 'finished'
+        end
+      end
     end
   end
 

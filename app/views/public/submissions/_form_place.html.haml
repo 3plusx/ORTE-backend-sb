@@ -1,6 +1,6 @@
-= simple_form_for [@map, @submission, @place], :method => 'POST',:url => '/' + params[:locale] + '/submissions/'+@submission.id.to_s+'/create_place?layer_id='+ @layer.id.to_s do |f|
-  = f.input :layer_id, :as => :hidden, :input_html => { :value => @layer.id }
-  = f.input :locale,  :as => :hidden, :input_html => { :value => params[:locale],:id => "locale" }
+= simple_form_for [@map, @submission, @place], :url => {:action => @action} do |f|
+  = f.input :layer_id, :input_html => { :value => @layer.id }
+  = f.input :locale, :input_html => { :value => params[:locale],:id => "locale" }
 
   = f.input :lat, :as => :hidden, :input_html => { :value => @place.lat }
   = f.input :lon, :as => :hidden, :input_html => { :value => @place.lon }

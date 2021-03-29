@@ -1,6 +1,6 @@
-= simple_form_for [@map,@layer, @submission], :url => '/' + params[:locale] + '/submissions?layer_id=' + @layer.id.to_s do |f|
-  = f.input :layer_id, :as => :hidden, :input_html => { :value => @layer.id }
-  = f.input :locale, :as => :hidden, :input_html => { :value => params[:locale] }
+= simple_form_for [@map,@layer, @submission], :url => {:action => @action, :controller => 'public/submissions'} do |f|
+  = f.input :layer_id, :input_html => { :value => @layer.id }
+  = f.input :locale, :input_html => { :value => params[:locale] }
   = render partial: 'form_head', locals: { :menu_index => 0 }
   = render partial: 'form_menu', locals: { :menu_index => 0 }
   .grid-x.grid-padding-x
