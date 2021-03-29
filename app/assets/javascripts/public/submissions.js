@@ -36,7 +36,7 @@
             if ( !value.length > 0 ) {
               value = "&nbsp;"
             }
-            $('#' + element + '_receiver').html(value);
+            $('#' + element + '_receiver').html(value.replace(/\n/g, "<br />"));
          });
         }
       });
