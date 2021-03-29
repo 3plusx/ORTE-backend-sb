@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+next unless @layer.published
 json.type "FeatureCollection"
 json.title @layer.title
 json.text @layer.text
