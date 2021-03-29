@@ -31,11 +31,3 @@
                         = image_tag url_for(img.file)
                       %p.image_title
                         = img.title
-              - else
-                .grid-x
-                  .image.ui-state-default.thumbnail{id: "image_default"}
-                    = image_tag asset_path('default.jpg')
-            - else
-              .grid-x
-                .image.ui-state-default.thumbnail{id: "image_default"}
-                  = image_tag asset_path('default.jpg')
