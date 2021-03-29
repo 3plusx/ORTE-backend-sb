@@ -37,7 +37,7 @@ Rails.application.configure do
 
   config.action_controller.default_url_options = { host: Rails.application.credentials.dig(:deploy, :staging, :server), :protocol => Settings.app_host_protocol }
 
-  config.action_controller.asset_host = Rails.application.credentials.dig(:deploy, :staging, :server)
+  # config.action_controller.asset_host = Rails.application.credentials.dig(:deploy, :staging, :server)
 
   config.action_mailer.default_url_options = { host: Rails.application.credentials.dig(:deploy, :staging, :server), :protocol => Settings.app_host_protocol }
 
