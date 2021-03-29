@@ -67,26 +67,15 @@
         });
       }
 
-      if( $('#image_upload').length > 0 ){
-        //setup handler for image switch
-        $('#image_upload').on('change',function(){
-          if($( '#image_upload' ).is(':checked')) {
-            $('#image_accordion').foundation('down',$("#image_form_item .accordion-content"));
-            $('#place_image_placeholder').show();
-          } else {
-            $('#image_accordion').foundation('up',$("#image_form_item .accordion-content"));
-            $('#place_image_placeholder').hide();
-          }
-        });
+      if( $('#step_image').length > 0 ){
         $('#image_accordion').on('down.zf.accordion',function(){
-            $('#place_image_placeholder').show();
-            $( '#image_upload' ).prop('checked', true);
-        });
+          $('#place_image_placeholder').show();
+          $( '#image_input' ).val('1');
+      });
         $('#image_accordion').on('up.zf.accordion',function(){
           $('#place_image_placeholder').hide();
-          $( '#image_upload' ).prop('checked', false);
+          $('#image_input').val('0');
         });
-
       }
 
       if( $('#place_address').length > 0 ){
