@@ -14,12 +14,12 @@
   .grid-x.grid-padding-x
     .large-10.large-offset-1.medium-12.cell
       %nav.menu
-        - [{name: 'english', code: 'en'}, {name: 'deutsch', code: 'de'}, {name: 'français', code: 'fr'}, {name: 'italiano', code: 'it', }, {name: 'nederlands', code: 'nl'}, {name: 'polski', code: 'pl'}].each do |language|
+        - I18n.available_locales.each do |language|
 
           - klass = 'button secondary'
-          - if params[:locale] == language[:code]
+          - if params[:locale] == language.to_s
             - klass = "#{klass} active"
-          = link_to language[:name], current_page_params.merge(layer_id: params[:layer_id],place_id: params[:place_id], locale: language[:code]), class: "#{klass}"
+          = link_to t('languages.' + language.to_s), current_page_params.merge(layer_id: params[:layer_id],place_id: params[:place_id], locale: language.to_s), class: "#{klass}"
   %hr
   .grid-x.grid-padding-x
     .large-10.large-offset-1.medium-12.cell

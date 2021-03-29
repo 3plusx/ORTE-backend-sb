@@ -12,16 +12,29 @@ en:
     navigation:
       sign_out: Sign out
       imprint: Imprint
+  languages:
+    en: "english"
+    de: "deutsch"
+    fr: "français"
+    it: "italiano"
+    nl: "nederlands"
+    pl: "polski"
+    ru: "русский"
+
   search:
     lookup:
-      intro: 'How to map: Search an address with the field above by adding your home
-        city name.'
-      address: 'Address:'
-      no_input: "<strong>No input!</strong> Please type in a complete address ('Street
+      intro:
+        "How to map: Search an address with the field above by adding your home
+        city name."
+      address: "Address:"
+      no_input:
+        "<strong>No input!</strong> Please type in a complete address ('Street
         Number, City')"
-      too_short: "<strong>Input too short.</strong> Please type in a complete address
+      too_short:
+        "<strong>Input too short.</strong> Please type in a complete address
         ('Street Number, City')"
-      no_result: Nothing found. Please try another adress!  (Type 'Street Number,
+      no_result:
+        Nothing found. Please try another adress!  (Type 'Street Number,
         City')
       success_result: Please select one result below (or type in another address).
       nothing_found: :( Nothing found. Please try another input.
