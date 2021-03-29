@@ -15,7 +15,8 @@ SecureHeaders::Configuration.default do |config|
   config.x_xss_protection = "1; mode=block"
   config.x_download_options = "noopen"
   config.x_permitted_cross_domain_policies = "none"
-  config.referrer_policy = %w(origin-when-cross-origin strict-origin-when-cross-origin)
+  # config.referrer_policy = %w(origin-when-cross-origin strict-origin-when-cross-origin)
+  config.referrer_policy = %w(origin-when-cross-origin)
   default_csp_config = {
     # "meta" values. these will shape the header, but the values are not included in the header.
     preserve_schemes: true, # default: false. Schemes are removed from host sources to save bytes and discourage mixed content.
@@ -44,9 +45,9 @@ SecureHeaders::Configuration.default do |config|
 
   if Rails.env.development? || Rails.env.test? || Rails.env.localtest? || Rails.env.staging?  || Rails.env.production?
     config.csp = default_csp_config.merge({
-        default_src: %w('self'),
-        font_src: %w('self' 'unsafe-inline'  https://staging.orte.link https://orte.link),
-        script_src: %w('self' 'unsafe-inline'  https://staging.orte.link https://orte.link),
+        default_src: %w('self' https://staging.orte.link https://orte.link),
+        font_src: %w('self' 'unsafe-inline' https://staging.orte.link https://orte.link),
+        script_src: %w('self' 'unsafe-inline' https://staging.orte.link https://orte.link),
         block_all_mixed_content: false,
         upgrade_insecure_requests: false,
         sandbox: false
