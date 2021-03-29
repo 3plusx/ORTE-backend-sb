@@ -5,13 +5,13 @@
     %meta{ name: 'robots', content: 'noindex, nofollow' }
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
 
-    - title = content_for?(:title) ? "#{yield(:title)}" : "#{Settings.app_name}"
-    %title= title
+    %title= t('simple_form.form_intro.title')
 
     %meta{property:"og:type", content:"website"}
-    %meta{property:"og:title", content:"#{title}"}
-    %meta{property:"og:description", content:"#{Settings.app_tagline}"}
-    %meta{property:"og:image", content:"#{Settings.app_url}#{asset_path('apple-touch-icon.png')}"}
+    %meta{property:"og:title", content:"#{t('simple_form.form_intro.title')}"}
+    - description = t('simple_form.form_intro.text').truncate_words(40)
+    %meta{property:"og:description", content:"#{description}"}
+    %meta{property:"og:image", content:"#{Settings.app_url}#{asset_path('3px_ut_76_remembrance_draft_header.jpg')}"}
 
 
     = stylesheet_link_tag "application"
@@ -46,8 +46,9 @@
     %footer.footer
       .grid-x
         .cell.large-10.medium-8.small-6
-          = #render partial: "layouts/version"
-          = #render partial: "layouts/credits"
+          
+          = link_to 'https://www.stiftung-lager-sandbostel.de/about/', target: 'imprint' do
+            = t('layouts.navigation.imprint')
         .cell.large-2.medium-4.small-6.text-right
 
           - if user_signed_in?
