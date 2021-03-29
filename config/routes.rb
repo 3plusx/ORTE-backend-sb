@@ -3,9 +3,20 @@ Rails.application.routes.draw do
   devise_for :users
 
   if Rails.env.production?
-    root :to => 'public/submissions#new', locale: 'de', layer_id: 2, constraints: { host: 'submissions.stiftung-lager-sandbostel.de'  }
+    I18n.available_locales.each_with_index do |locale, i|
+      root :to => 'public/submissions#new', locale: locale.to_s ,layer_id: 2, bogus_id: i, constraints: { host: 'submissions.stiftung-lager-sandbostel.de', query_string: 'locale=' + locale.to_s  }
+    end
+    root :to => 'public/submissions#new', locale: 'de', layer_id: 2, bogus_id:23, constraints: { host: 'submissions.stiftung-lager-sandbostel.de'  }
+  elsif Rails.env.development?
+    I18n.available_locales.each_with_index do |locale, i|
+      root :to => 'public/submissions#new', locale: locale.to_s ,layer_id: 1, bogus_id: i, constraints: { host: 'localhost', port: '3000', query_string: 'locale=' + locale.to_s  }
+    end
+    root :to => 'public/submissions#new', locale: 'de' ,layer_id: 1, bogus_id:23, constraints: { host: 'localhost', port: '3000'  }
   else
-    root :to => 'public/submissions#new', locale: 'de', layer_id: 2, constraints: { host: 'submissions-staging.stiftung-lager-sandbostel.de'  }
+    I18n.available_locales.each_with_index do |locale, i|
+      root :to => 'public/submissions#new', locale: locale.to_s ,layer_id: 2, bogus_id: i, constraints: { host: 'submissions-staging.stiftung-lager-sandbostel.de', query_string: 'locale=' + locale.to_s  }
+    end
+    root :to => 'public/submissions#new', locale: 'de', layer_id: 2, bogus_id:23, constraints: { host: 'submissions-staging.stiftung-lager-sandbostel.de'  }
   end
 
   root 'start#index'
