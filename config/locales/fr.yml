@@ -15,17 +15,19 @@ fr:
     messages:
       models:
         submission:
-          created: Entrée réussie
+          created: Vos données ont été enregistrées (étape 1).
         place:
-          created: Entrée lieu de résidence réussie
+          created: Vos données ont été enregistrées (étape 2).
         image:
-          created: Votre photo a été enregistrée
+          created: Votre contribution a été enregistrée.
     errors:
       models:
         submission:
           attributes:
             name:
               blank: La saisie du nom est obligatoire
+            email:
+              taken: adresse e-Mail déjà utilisée
         image:
           attributes:
             title:
@@ -36,3 +38,14 @@ fr:
       blank: champ requis
       present: ce champ reste vide
       inclusion: Consentement requis
+  search:
+    lookup:
+      intro: 'Comment vous localiser: recherchez une adresse avec le champ ci-dessus
+        en ajoutant le nom de votre ville de résidence.'
+      address: 'adresse:'
+      no_input: Veuillez saisir une adresse complète (numéro de rue, ville)
+      too_short: Veuillez saisir une adresse complète (numéro de rue, ville)
+      no_result: Rien n'a été trouvé. Veuillez essayer une autre adresse! (numéro
+        de rue, ville)
+      success_result: Veuillez sélectionner un résultat ci-dessous (ou saisir une
+        autre adresse).

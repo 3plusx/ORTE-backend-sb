@@ -1,18 +1,17 @@
 ---
 en:
   simple_form:
-    "yes": "Yes"
-    "no": "No"
+    'yes': 'Yes'
+    'no': 'No'
     required:
       text: required
       mark: "*"
     error_notification:
-      default_message: "Please review the problems below:"
+      default_message: 'Please review the problems below:'
     preview:
       intro: Preview of your submission
     form_intro:
-      title:
-        Commemoration of the 76th anniversary of the liberation of Stalag X B
+      title: Commemoration of the 76th anniversary of the liberation of Stalag X B
         Sandbostel
       text: |-
         Also this year, on April 29, we cannot commemorate together in Sandbostel the liberation of Stalag X B and remember those who suffered and died here. We will again celebrate the commemoration in a digital form. For this purpose, on the anniversary of the liberation, video clips with greetings from politicians and diplomats, contributions of students, and speeches from survivors and relatives will be released. There will also be another participatory project in which you, who might otherwise have come to Sandbostel, can actively participate.
@@ -25,7 +24,9 @@ en:
       image: Image / Media
     form_finished:
       title: Thank you for your participation.
-      subtitle: After an editorial review, your contribution will be published on <a href="https://www.sandbostel76.de">www.sandbostel76.de</a> from mid-April. Contributions submitted later will be uploaded directly after review.
+      subtitle: After an editorial review, your contribution will be published on
+        <a href="https://www.sandbostel76.de">www.sandbostel76.de</a> from mid-April.
+        Contributions submitted later will be uploaded directly after review.
     labels:
       title: Name (or Organisation)
       teaser: Your contribution
@@ -33,8 +34,7 @@ en:
       location: Location
       image: Would you like to upload an image?
       image_description: Image description
-      rights:
-        I hereby grant the Sandbostel Camp Memorial the rights to publish my
+      rights: I hereby grant the Sandbostel Camp Memorial the rights to publish my
         contribution (Text and Images) on there website. I confirm that I am owner
         of the necessary copyright.
       privacy: I hereby confirm that I/we have read and understood the privacy statement.
@@ -47,8 +47,7 @@ en:
       title: Your name will be published
       teaser: A text with maximum of 500 chars.
       email: Your email address will not be published!
-      location:
-        Your location will be published with your name, please provide the
+      location: Your location will be published with your name, please provide the
         city (or village) plus the name of the country.
       image: Please use formats like JPEG, GIF, PNG only, maximum size 5MB
       image_description: Describe the image in a few words

@@ -15,17 +15,19 @@ pl:
     messages:
       models:
         submission:
-          created: Wpis został wysłany z sukcesem.
+          created: Twoje dane zostały zapisane (krok 1)
         place:
-          created: Podana lokalizacja.
+          created: Twoje dane zostały zapisane (krok 2)
         image:
-          created: Twoje zdjęcie zostało zapisane.
+          created: Wpis został zapisany.
     errors:
       models:
         submission:
           attributes:
             name:
               blank: Podanie imienia i nazwiska jest obowiązkowe.
+            email:
+              taken: Adres E-mail już użyty
         image:
           attributes:
             title:
@@ -36,3 +38,13 @@ pl:
       blank: Obowiązkowe
       present: Pozostaje wolne.
       inclusion: Zgoda obowiązkowa
+  search:
+    lookup:
+      intro: Wpisz swoje miejsce zamieszkania
+      address: 'Adres:'
+      no_input: "<strong>Brak wkładu.</strong>  Wpisz dokładny adres (numer ulicy,
+        miasto)"
+      too_short: "<strong>Za krótki wkład.</strong> Wpisz dokładny adres (numer ulicy,
+        miasto)"
+      no_result: Nie znaleziono! Proszę podać inny adres (wpisz numer domu i miejscowość)
+      success_result: Proszę wybrać jeden z poniższych wyników (lub wpisać inny adres).
