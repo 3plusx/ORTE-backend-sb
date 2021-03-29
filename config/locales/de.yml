@@ -11,6 +11,7 @@ de:
   layouts:
     navigation:
       sign_out: Abmelden
+      imprint: Impressum
   activerecord:
     messages:
       models:

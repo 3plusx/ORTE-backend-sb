@@ -11,6 +11,7 @@ en:
   layouts:
     navigation:
       sign_out: Sign out
+      imprint: Imprint
   search:
     lookup:
       intro: "How to map: Search an address with the field above by adding your home city name."
