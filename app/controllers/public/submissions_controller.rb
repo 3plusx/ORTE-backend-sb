@@ -212,13 +212,13 @@ class Public::SubmissionsController < ApplicationController
         @submission.status = SUBMISSION_STATUS_STEP3
         @submission.save!
 
-        format.html { redirect_to submission_finished_path(params[:locale], submission_id: @submission.id, layer_id: layer_from_id), notice: t('submission.finished') }
+        format.html { redirect_to submission_finished_path(params[:locale], submission_id: @submission.id, layer_id: layer_from_id), notice: t('activerecord.messages.models.image.created') }
       end
     end
   end
 
   def finished
-    return unless session[:submission_id].positive?
+    return unless session[:submission_id].positive? && session[:submission_id] == submission_from_id
 
     @submission = Submission.find(session[:submission_id])
     @place = @submission.place

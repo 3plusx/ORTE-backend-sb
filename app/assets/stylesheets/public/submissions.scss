@@ -135,6 +135,16 @@ body#submissions {
     .preview.done:before {
       content: "\f126";
     }
+
+    #place_teaser_receiver {
+      border: 1px solid rgb(167, 166, 166);
+      margin: 5px 0;
+      padding: 10px;
+    }
+    #place_image_receiver p.image_title {
+      padding: 4px;
+      margin-bottom: 0;
+    }
   }
   .form-actions {
     margin: 15px 15px 45px;

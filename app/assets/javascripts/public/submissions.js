@@ -18,7 +18,7 @@
         }
       });
       // setup handler for form field changes
-      var form_fields = ['submission_name', 'place_location', 'place_teaser', 'image_title'];
+      var form_fields = ['submission_name', 'place_location', 'image_title'];
       form_fields.forEach(element => {
         if( $('#' + element).length > 0 && $('#' + element + '_receiver').length > 0 ) {
           // check on page load
