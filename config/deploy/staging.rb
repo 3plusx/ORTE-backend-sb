@@ -1,5 +1,5 @@
 
-set :branch, 'fuchs/public-submissions'
+set :branch, 'main'
 set :rails_env, 'staging'
 set :stage, 'staging'
 
