@@ -1,5 +1,5 @@
 !!! 5
-%html{ lang: "de" }
+%html{ lang: "#{I18n.locale.to_s}" }
   %head
     %meta{ charset: "utf-8" }
     %meta{ name: 'robots', content: 'noindex, nofollow' }
@@ -29,9 +29,9 @@
 
 
 
-  - klass = ""
+  - klass = "lang-" + I18n.locale.to_s
   - if current_user
-    - klass = "logged_in "
+    - klass = klass + " logged_in "
   - if Rails.env == 'staging' || Rails.env == 'developement'
     - klass = klass + "#{Rails.env.parameterize}"
   - id = ''
