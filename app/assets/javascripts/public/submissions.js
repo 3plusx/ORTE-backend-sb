@@ -41,32 +41,6 @@
         }
       });
 
-
-      if ( $('textarea#place_teaser').length > 0 ) {
-        var current_textarea_length = $('textarea#place_teaser')[0].value.length;
-        if ( current_textarea_length > 1  ) {
-          $('#place_teaser_counter').text(current_textarea_length);
-        }
-        if (current_textarea_length >= 450) {
-          $('#place_teaser_counter').addClass('warning');
-        }
-
-
-        $('textarea#place_teaser').on('change keyup paste', function() {
-            var len = this.value.length;
-            if (len >= 450) {
-              $('#place_teaser_counter').addClass('warning');
-            } else {
-              $('#place_teaser_counter').removeClass('warning');
-            }
-            if (len >= 500) {
-              this.value = this.value.substring(0, 500);
-            } else {
-              $('#place_teaser_counter').text(len);
-            }
-        });
-      }
-
       if( $('#step_image').length > 0 ){
         $('#image_accordion').on('down.zf.accordion',function(){
           $('#place_image_placeholder').show();

@@ -47,15 +47,52 @@
             = #tinymce :onchange_callback => "submission_tinymce_preview"
             :javascript
               $(document).ready(function(){
-                console.log('tiny')
+                tinymce.PluginManager.add('maxchars', function(editor) {
+
+                  //set a default value for the maxChars peroperty
+                  editor.maxChars = editor.maxChars || 500;
+                
+                  var label = $('#place_teaser_counter');
+                
+                  function init() {
+                    updateStyle(); //check if the initial content is valid
+                  };
+                
+                  function updateMsg(show, char_length) {
+                    if (!label) {
+                      return;
+                    }
+                    var msg = char_length + '/' + editor.maxChars;
+                    label.text(msg);
+                  }
+                
+                  function updateStyle() {
+                    var content = editor.getContent({
+                      format: 'text'
+                    });
+                    var $body = editor.$('.mce-content-body');
+                    
+                    if (content.length > editor.maxChars) {
+                      label.addClass("warning");
+                      updateMsg(true,content.length);
+                
+                    } else {
+                      label.removeClass("warning");
+                      updateMsg(false,content.length);
+                    }
+                
+                  };
+                  editor.on('init', init);
+                  editor.on("change keyUp", updateStyle);
+                });
                 tinyMCE.init({
                   selector: '#place_teaser',
                   toolbar: 'bold italic bullist | link | undo redo | fullscreen',
                   branding: false,
                   menubar: false,
                   statusbar: false,
-                  plugins: "link, lists, fullscreen",
-                  setup:function(editor) {
+                  plugins: "link, lists, fullscreen, maxchars",
+                  setup:  function(editor) {
                     editor.on('keyup', function(e) {
                       $('#place_teaser_receiver').html(editor.getContent());
                     });
