@@ -39,6 +39,7 @@ fr:
       submit: Soumettre votre contribution
       button_step1: Passez à l'étape 2
       button_step2: Passez à l'étape 3
+      visit_site: Visitez notre site internet
     hints:
       title: votre nom sera publié.
       teaser: Texte de 500 caractères maximum.

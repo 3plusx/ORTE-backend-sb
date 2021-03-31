@@ -40,6 +40,7 @@ it:
       submit: Invia contributo
       button_step1: Vai al punto 2
       button_step2: Vai al punto 3
+      visit_site: Visitate il nostro sito web
     hints:
       title: Il tuo nome verrà pubblicato
       teaser: Testo con una lunghezza massima di 500 caratteri.
