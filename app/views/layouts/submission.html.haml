@@ -5,11 +5,12 @@
     %meta{ name: 'robots', content: 'noindex, nofollow' }
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
 
-    %title= t('simple_form.form_intro.title')
+    - title = strip_tags(t('simple_form.form_intro.title'))
+    %title= title
 
     %meta{property:"og:type", content:"website"}
-    %meta{property:"og:title", content:"#{t('simple_form.form_intro.title')}"}
-    - description = t('simple_form.form_intro.text').truncate_words(40)
+    %meta{property:"og:title", content:"#{title}"}
+    - description = strip_tags(t('simple_form.form_intro.text')).truncate_words(40)
     %meta{property:"og:description", content:"#{description}"}
     %meta{property:"og:image", content:"#{Settings.app_url}#{asset_path('3px_ut_76_remembrance_draft_header.jpg')}"}
 
