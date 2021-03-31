@@ -2,6 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+body.lang-ru {
+  font-family: Helvetica, Roboto, Arial, sans-serif;
+  font-size: 11.3pt;
+}
+.lang-ru h1,
+h2 {
+  font-family: Helvetica, Roboto, Arial, sans-serif;
+  line-height: 1;
+}
+.lang-ru h3,
+h4,
+h5,
+h6 {
+  font-family: Helvetica, Roboto, Arial, sans-serif;
+}
+
 body#submissions {
   background-color: white;
 
