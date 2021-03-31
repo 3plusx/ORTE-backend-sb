@@ -4,9 +4,9 @@ Rails.application.routes.draw do
 
   if Rails.env.production?
     I18n.available_locales.each_with_index do |locale, i|
-      root :to => 'public/submissions#new', locale: locale.to_s ,layer_id: 2, bogus_id: i, constraints: { host: 'submissions.stiftung-lager-sandbostel.de', query_string: 'locale=' + locale.to_s  }
+      root :to => 'public/submissions#new', locale: locale.to_s ,layer_id: 51, bogus_id: i, constraints: { host: 'submissions.stiftung-lager-sandbostel.de', query_string: 'locale=' + locale.to_s  }
     end
-    root :to => 'public/submissions#new', locale: 'de', layer_id: 2, bogus_id:23, constraints: { host: 'submissions.stiftung-lager-sandbostel.de'  }
+    root :to => 'public/submissions#new', locale: 'de', layer_id: 51, bogus_id:23, constraints: { host: 'submissions.stiftung-lager-sandbostel.de'  }
   elsif Rails.env.development?
     I18n.available_locales.each_with_index do |locale, i|
       root :to => 'public/submissions#new', locale: locale.to_s ,layer_id: 1, bogus_id: i, constraints: { host: 'localhost', port: '3000', query_string: 'locale=' + locale.to_s  }
