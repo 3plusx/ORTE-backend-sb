@@ -114,6 +114,7 @@
           }
           // if results
           console.log("items: "+items.length);
+          console.log("data: "+data.length);
           console.log("response: "+$('#response').length);
           $('.response-list').remove();
           $.each( data, function( key, val ) {
@@ -166,10 +167,10 @@
             }
 
 
-            if ( val.class.match(regexp) ) {
+            
               console.log('Lookup:: Using entry');
               items.push( "<li id='" + key + "' class='nominatim_results' ><a href='return false;' data-zip='"+ postcode + "' data-city='"+ city + "' data-lat='"+ val.lat + "' data-lon='"+ val.lon + "' data-location='"+ label + " " + val.display_name + "'>" + label + " " + val.display_name + "</a></li>" );
-            }
+            
           });
           $( "<ul/>", {
             "id": "response",
