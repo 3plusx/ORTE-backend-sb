@@ -11,6 +11,7 @@ it:
   layouts:
     navigation:
       sign_out: Disconnettiti
+      imprint: Informazione legale
   activerecord:
     messages:
       models:
@@ -38,11 +39,11 @@ it:
       inclusion: È necessario il tuo consenso
   search:
     lookup:
-      intro: 'Come fare la mappa: Cerca un indirizzo utilizzando il campo qui sopra
-        aggiungendo il nome della tua città.'
+      intro:
+        "Come fare la mappa: Cerca un indirizzo utilizzando il campo qui sopra
+        aggiungendo il nome della tua città."
       address: Indirizzo
-      no_input: Si prega di digitare un indirizzo completo ('numero civico, città')
-      too_short: Si prega di digitare un indirizzo completo  ('numero civico, città')
-      no_result: Non abbiamo trovato nulla. Prova un altro indirizzo! (digita "numero
-        civico, città")
+      no_input: Nessun input! Si prega di inserire la città e il paese.
+      too_short: Ingresso troppo corto! Si prega di inserire la città e il paese.
+      no_result: Non è stato trovato nulla. Per favore, prova in un altro posto!
       success_result: Seleziona un risultato qui sotto (o digita un altro indirizzo).

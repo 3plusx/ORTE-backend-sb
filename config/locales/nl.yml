@@ -11,6 +11,7 @@ nl:
   layouts:
     navigation:
       sign_out: Afmelden
+      imprint: Impressum
   activerecord:
     messages:
       models:
@@ -42,11 +43,9 @@ nl:
     lookup:
       intro: Plaats zoeken door hierboven de naam van uw woonplaats in te voeren
       address: Adres
-      no_input: "<strong>Invoer ontbreekt</strong> Voer s.v.p. een volledig adres
-        in ('Straat Nummer, Plaats')"
-      too_short: "<strong>Invoer onvolledig</strong> Voer s.v.p. een volledig adres
-        in ('Straat Nummer, Plaats')"
-      no_result: Niets gevonden. Probeer s.v.p. een ander adres!  (Invoer 'Straat
-        Nummer, Plaats')
-      success_result: Kies s.v.p. een van de onderstaande resultaten (of voer een
+      no_input: "Geen input! Voer stad en land in."
+      too_short: "Input te kort! Voer stad en land in."
+      no_result: Er is niets gevonden. Probeer een andere locatie!
+      success_result:
+        Kies s.v.p. een van de onderstaande resultaten (of voer een
         ander adres in).

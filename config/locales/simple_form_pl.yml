@@ -40,6 +40,7 @@ pl:
       submit: Wyślij wpis
       button_step1: Dalej
       button_step2: Dalej
+      visit_site: Odwiedź naszą stronę internetową
     hints:
       title: Twoje nazwisko zostanie opublikowane
       teaser: Tekst o maksymalnej długości 500 znaków.

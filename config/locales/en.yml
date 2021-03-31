@@ -11,7 +11,7 @@ en:
   layouts:
     navigation:
       sign_out: Sign out
-      imprint: Imprint
+      imprint: Legal Notice
   languages:
     en: "english"
     de: "deutsch"
@@ -27,17 +27,11 @@ en:
         "How to map: Search an address with the field above by adding your home
         city name."
       address: "Address:"
-      no_input:
-        "<strong>No input!</strong> Please type in a complete address ('Street
-        Number, City')"
-      too_short:
-        "<strong>Input too short.</strong> Please type in a complete address
-        ('Street Number, City')"
-      no_result:
-        Nothing found. Please try another adress!  (Type 'Street Number,
-        City')
+      no_input: "<strong>No input!</strong> Please type in home city and country."
+      too_short: "<strong>Input too short.</strong> Please type in home city and country."
+      no_result: Nothing found. Please try another place!
       success_result: Please select one result below (or type in another address).
-      nothing_found: :( Nothing found. Please try another input.
+      nothing_found: Nothing found. Please try another place!
   activerecord:
     messages:
       models:

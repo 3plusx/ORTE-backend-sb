@@ -42,13 +42,11 @@ de:
       inclusion: Zustimmung erforderlich
   search:
     lookup:
-      intro: 'Wie in Weltkarte eintragen: Mit obigem Feld Adresse suchen durch Hinzufügung
-        des Namens Ihres Heimatortes'
-      address: 'Adresse:'
-      no_input: Keine Eingabe! Bitte vollständige Adresse eingeben (Straße, Hausnummer,
-        Ort)!
-      too_short: Eingabe zu kurz! Bitte vollständige Adresse eingeben (Straße, Hausnummer,
-        Ort)!
-      no_result: Nichts gefunden. Bitte mit anderer Adresse versuchen (Straße, Hausnummer,
-        Ort eingeben)!
+      intro:
+        "Wie in Weltkarte eintragen: Mit obigem Feld Adresse suchen durch Hinzufügung
+        des Namens Ihres Heimatortes"
+      address: "Adresse:"
+      no_input: Keine Eingabe! Bitte Stadt/Ort und Land eintragen.
+      too_short: Eingabe zu kurz! Bitte Stadt/Ort und Land eintragen.
+      no_result: Nichts gefunden. Bitte mit anderem Ort versuchen.
       success_result: Bitte ein Ergebnis unten auswählen (oder andere Adresse eingeben)!
