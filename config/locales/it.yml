@@ -15,11 +15,11 @@ it:
     messages:
       models:
         submission:
-          created: L‘inserimento del contributo è effettuato
+          created: I tuoi dati sono stati salvati (passo 1)
         place:
-          created: Posizione inserita con successo
+          created: I tuoi dati sono stati salvati (passo 2)
         image:
-          created: La tua immagine è stata salvata
+          created: Il tuo contributo è stato salvato
     errors:
       models:
         submission:
@@ -36,3 +36,13 @@ it:
       blank: Campo obbligatorio
       present: Questo spazio resta vuoto
       inclusion: È necessario il tuo consenso
+  search:
+    lookup:
+      intro: 'Come fare la mappa: Cerca un indirizzo utilizzando il campo qui sopra
+        aggiungendo il nome della tua città.'
+      address: Indirizzo
+      no_input: Si prega di digitare un indirizzo completo ('numero civico, città')
+      too_short: Si prega di digitare un indirizzo completo  ('numero civico, città')
+      no_result: Non abbiamo trovato nulla. Prova un altro indirizzo! (digita "numero
+        civico, città")
+      success_result: Seleziona un risultato qui sotto (o digita un altro indirizzo).

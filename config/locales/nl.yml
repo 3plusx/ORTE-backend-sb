@@ -15,17 +15,19 @@ nl:
     messages:
       models:
         submission:
-          created: Uw bijdrage is verzonden
+          created: Uw gegevens zijn ingevoerd (Stap 1)
         place:
-          created: Uw locatie is aangemaakt
+          created: Uw gegevens zijn ingevoerd (Stap 2)
         image:
-          created: Uw afbeelding is opgeslagen
+          created: Uw bijdrage is opgeslagen
     errors:
       models:
         submission:
           attributes:
             name:
               blank: Voer s.v.p. een naam in
+            email:
+              taken: Email adres al in gebruik
         image:
           attributes:
             title:
@@ -36,3 +38,15 @@ nl:
       blank: Verplicht
       present: Geen invoer mogelijk
       inclusion: Toestemming vereist
+  search:
+    lookup:
+      intro: Plaats zoeken door hierboven de naam van uw woonplaats in te voeren
+      address: Adres
+      no_input: "<strong>Invoer ontbreekt</strong> Voer s.v.p. een volledig adres
+        in ('Straat Nummer, Plaats')"
+      too_short: "<strong>Invoer onvolledig</strong> Voer s.v.p. een volledig adres
+        in ('Straat Nummer, Plaats')"
+      no_result: Niets gevonden. Probeer s.v.p. een ander adres!  (Invoer 'Straat
+        Nummer, Plaats')
+      success_result: Kies s.v.p. een van de onderstaande resultaten (of voer een
+        ander adres in).

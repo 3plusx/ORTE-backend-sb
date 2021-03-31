@@ -11,7 +11,7 @@ de:
     preview:
       intro: Vorschau Ihres Beitrages
     form_intro:
-      title: Gedenken zum 76. Jahrestag der Befreiung des Stalag X B Sandbostel
+      title: Gedenken zum <nobr>76. Jahrestag</nobr> der Befreiung des <nobr>Stalag X B Sandbostel</nobr>
       text: |
         Auch in diesem Jahr können wir am 29. April nicht gemeinsam in Sandbostel an die Befreiung des Stalag X B erinnern und derer gedenken, die hier gelitten haben und gestorben sind. Wir werden die Gedenkveranstaltung erneut in einer digitalen Form begehen. Dazu wird am Jahrestag der Befreiung ein Film mit Grußworten aus Politik und Diplomatie, Beiträgen von Jugendlichen, sowie Reden von Überlebenden und Angehörigen veröffentlicht. Auch gibt es wieder ein partizipatives Gedenkprojekt, an dem Sie, die sonst vielleicht nach Sandbostel gekommen wären, sich aktiv beteiligen können.
 
@@ -21,12 +21,15 @@ de:
 
         Wir freuen uns auf Ihre Beiträge - vielen Dank!
     form_menu:
-      submission: "Ihre Daten"
-      place: "Ort/Beitrag"
-      image: "Bild/Medium"
+      submission: Ihre Daten
+      place: Ort/Beitrag
+      image: Bild/Medium
     form_finished:
       title: Vielen Dank für Ihre Beteiligung.
-      subtitle: Nach einer redaktionellen Prüfung wird der Beitrag ab Mitte April auf <a href="https://www.sandbostel76.de">www.sandbostel76.de</a> veröffentlicht. Beiträge die später eingereicht werden, werden nach der Prüfung direkt hochgeladen.
+      subtitle:
+        Nach einer redaktionellen Prüfung wird der Beitrag ab Mitte April
+        auf <a href="https://www.sandbostel76.de">www.sandbostel76.de</a> veröffentlicht.
+        Beiträge die später eingereicht werden, werden nach der Prüfung direkt hochgeladen.
     labels:
       title: Name (oder Organisation)
       teaser: Ihr Beitrag
@@ -44,6 +47,8 @@ de:
       button_step1: Weiter zu Schritt 2
       button_step2: Weiter zu Schritt 3
       submit: Beitrag einreichen
+      start_again: Einen weiteren Beitrag einreichen
+      visit_site: Besuchen Sie unsere Webseite
     hints:
       title: Ihr Name wird veröffentlicht.
       teaser: Text mit einer Länge von bis zu 500 Zeichen.
@@ -55,6 +60,7 @@ de:
         "Bitte nur die Formate JPEG, GIF und PNG verwenden. Maximale Größe: 5
         MB."
       image_description: Beschreiben Sie die Abbildung in wenigen Worten.
+      image_switch: Ein Bild hochladen?
     placeholders:
       title: Ihr Name und/oder Ihre Organisation
       teaser: Ihr Beitrag

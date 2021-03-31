@@ -18,7 +18,7 @@
         }
       });
       // setup handler for form field changes
-      var form_fields = ['submission_name', 'place_location', 'place_teaser', 'place_address', 'image_title'];
+      var form_fields = ['submission_name', 'place_location', 'image_title'];
       form_fields.forEach(element => {
         if( $('#' + element).length > 0 && $('#' + element + '_receiver').length > 0 ) {
           // check on page load
@@ -36,57 +36,20 @@
             if ( !value.length > 0 ) {
               value = "&nbsp;"
             }
-            $('#' + element + '_receiver').html(value);
+            $('#' + element + '_receiver').html(value.replace(/\n/g, "<br />"));
          });
         }
       });
 
-
-      if ( $('textarea#place_teaser').length > 0 ) {
-        var current_textarea_length = $('textarea#place_teaser')[0].value.length;
-        if ( current_textarea_length > 1  ) {
-          $('#place_teaser_counter').text(current_textarea_length);
-        }
-        if (current_textarea_length >= 450) {
-          $('#place_teaser_counter').addClass('warning');
-        }
-
-
-        $('textarea#place_teaser').on('change keyup paste', function() {
-            var len = this.value.length;
-            if (len >= 450) {
-              $('#place_teaser_counter').addClass('warning');
-            } else {
-              $('#place_teaser_counter').removeClass('warning');
-            }
-            if (len >= 500) {
-              this.value = this.value.substring(0, 500);
-            } else {
-              $('#place_teaser_counter').text(len);
-            }
-        });
-      }
-
-      if( $('#image_upload').length > 0 ){
-        //setup handler for image switch
-        $('#image_upload').on('change',function(){
-          if($( '#image_upload' ).is(':checked')) {
-            $('#image_accordion').foundation('down',$("#image_form_item .accordion-content"));
-            $('#place_image_placeholder').show();
-          } else {
-            $('#image_accordion').foundation('up',$("#image_form_item .accordion-content"));
-            $('#place_image_placeholder').hide();
-          }
-        });
+      if( $('#step_image').length > 0 ){
         $('#image_accordion').on('down.zf.accordion',function(){
-            $('#place_image_placeholder').show();
-            $( '#image_upload' ).prop('checked', true);
-        });
+          $('#place_image_placeholder').show();
+          $( '#image_input' ).val('1');
+      });
         $('#image_accordion').on('up.zf.accordion',function(){
           $('#place_image_placeholder').hide();
-          $( '#image_upload' ).prop('checked', false);
+          $('#image_input').val('0');
         });
-
       }
 
       if( $('#place_address').length > 0 ){
@@ -137,7 +100,7 @@
       //example
       // https://nominatim.openstreetmap.org/search?q=135+pilkington+avenue,+birmingham&format=xml&polygon=1&addressdetails=1
       var nominatium_url = 'https://nominatim.openstreetmap.org/search';
-      var nominatium_url_params = '&format=json&addressdetails=1&locale=de'
+      var nominatium_url_params = '&format=json&addressdetails=1&featuretype=city'
 
       var request = $.getJSON( nominatium_url+"?q="+address+nominatium_url_params, function( data ) {
 
@@ -151,6 +114,7 @@
           }
           // if results
           console.log("items: "+items.length);
+          console.log("data: "+data.length);
           console.log("response: "+$('#response').length);
           $('.response-list').remove();
           $.each( data, function( key, val ) {
@@ -203,10 +167,10 @@
             }
 
 
-            if ( val.class.match(regexp) ) {
+            
               console.log('Lookup:: Using entry');
               items.push( "<li id='" + key + "' class='nominatim_results' ><a href='return false;' data-zip='"+ postcode + "' data-city='"+ city + "' data-lat='"+ val.lat + "' data-lon='"+ val.lon + "' data-location='"+ label + " " + val.display_name + "'>" + label + " " + val.display_name + "</a></li>" );
-            }
+            
           });
           $( "<ul/>", {
             "id": "response",
@@ -219,6 +183,7 @@
           $('#selection-hint').addClass('active');
         }).done(function() {
           $('.nominatim_results a').on('click', function(e){
+
             console.log( "Click" );
             e.preventDefault();
             var lat = $(this).data('lat');

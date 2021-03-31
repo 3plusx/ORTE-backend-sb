@@ -11,7 +11,7 @@ nl:
     preview:
       intro: Voorbeeld van uw bijdrage
     form_intro:
-      title: Herdenking ter gelegenheid van '76 jaar bevrijding van Stalag X B Sandbostel'
+      title: Herdenking ter gelegenheid van <nobr>'76 jaar</nobr> bevrijding van <nobr>Stalag X B Sandbostel</nobr>'
       text: |-
         Ook dit jaar kunnen we helaas op 29 april niet gezamenlijk in Sandbostel de bevrijding van Stalag X B herdenken en hen die hier geleden hebben en stierven gedenken. We zullen ook dit keer de herdenkingsbijeenkomst digitaal vormgeven. Daartoe wordt op de herdenkingsdag een film met bijdragen uit politiek en diplomatie, activiteiten van scholieren en toespraken van overlevenden en familieleden van gestorvenen openbaar gemaakt. Ook zal er weer een interactief herdenkingsprojekt georganiseerd worden, waaraan U, die anders mogelijk graag naar Sandbostel gekomen was, actief kunt bijdragen.
         Op het formulier kunt U gedachten rond de bevrijding van Stalag X B of herinneringen aan mensen die U gedenkt formuleren. Daarnaast kunt U beeldmateriaal van U of Uw familie, zoals dokumenten, tekeningen of andere voor U belangrijke afbeeldingen toevoegen. Teksten en beeldmateriaal worden vanaf medio april samen met Uw woon- of verblijfplaats op een interactieve wereldkaart op <a href="https://www.sandbostel76.de">www.sandbostel76.de</a> gepubliceerd.
@@ -19,13 +19,16 @@ nl:
         Bij voorbaat hartelijk dank!
     form_finished:
       title: Dank U voor Uw bijdrage.
-      subtitle: Na een redactionele controle worden de bijdragen vanaf medio april op <a href="https://www.sandbostel76.de">www.sandbostel76.de</a> gepubliceerd. Bijdragen die later volgen worden eveneens na een controle direct online geplaatst.
+      subtitle:
+        Na een redactionele controle worden de bijdragen vanaf medio april
+        op <a href="https://www.sandbostel76.de">www.sandbostel76.de</a> gepubliceerd.
+        Bijdragen die later volgen worden eveneens na een controle direct online geplaatst.
     labels:
       title: Naam (of organisatie)
       teaser: Uw bijdrage
       email: E-mail
       location: Plaats
-      image: Beeldmateriaal uploaden
+      image: Wilt u een afbeelding uploaden?
       image_description: Beschrijving van beeldmateriaal
       rights:
         Hierbij geef ik de Gedenkstätte Lager Sandbostel toestemming, mijn bijdrage
@@ -35,6 +38,8 @@ nl:
         Ik bevestig dat ik de Algemene verordening gegevensbescherming (AVG)
         gelezen heb en begrijp
       submit: Bijdrage verzenden
+      button_step1: Ga door naar stap 2
+      button_step2: Ga door naar stap 3
     hints:
       title: Uw naam wordt openbaar gemaakt
       teaser: Tekst van maximaal 500 tekens
@@ -44,6 +49,7 @@ nl:
         stad / plaats en land aan.
       image: "Gebruik uitsluitend JPEG, GIF of PNG formaat. Maximale grootte: 5 MB"
       image_description: Beschrijf s.v.p. de afbeelding in enkele woorden
+      image_switch: Afbeelding uploaden?
     placeholders:
       title: Uw naam of die van uw organisatie
       teaser: Uw bijdrage
@@ -54,3 +60,7 @@ nl:
       accepted: Toestemming is vereist
       blank: Is vrij
       empty: Is vrij
+    form_menu:
+      submission: Uw gegevens
+      place: Plaats / Bijdrage
+      image: Afbeelding / Medium

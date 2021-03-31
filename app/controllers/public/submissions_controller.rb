@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SubmissionsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index new create new_place create_place new_image create_image finished]
+  skip_before_action :authenticate_user!, only: %i[index new create edit update new_place create_place edit_place update_place new_image create_image finished]
   layout 'submission'
 
   around_action :switch_locale
@@ -24,8 +24,7 @@ class Public::SubmissionsController < ApplicationController
 
   def new
     @layer = Layer.find_by_id(layer_from_id)
-    if @layer && @layer.public_submission
-
+    if @layer&.public_submission
       @submission = Submission.new
       @submission.name = params[:name]
       @submission.locale = params[:locale]
@@ -35,18 +34,23 @@ class Public::SubmissionsController < ApplicationController
 
       @map = @layer.map
       @user = User.new
+      @action = 'create'
     else
       redirect_to submissions_path
     end
   end
 
   def create
+    @submission = Submission.find(session[:submission_id]) if session[:submission_id]&.positive?
+
     @submission = Submission.new(submission_params)
     @submission.status = SUBMISSION_STATUS_STEP1
+
     @layer = Layer.find(layer_from_id)
     return unless @layer.public_submission
 
     @map = @layer.map
+    @action = 'create'
 
     respond_to do |format|
       if @submission.save
@@ -58,10 +62,57 @@ class Public::SubmissionsController < ApplicationController
     end
   end
 
+  def edit
+    @layer = Layer.find_by_id(layer_from_id)
+    if @layer&.public_submission
+      if session[:submission_id]&.positive? && session[:submission_id] == submission_from_id
+        @submission = Submission.find(session[:submission_id])
+      else
+        redirect_to submissions_new_path
+      end
+
+      @map = @layer.map
+      @user = User.new
+      @action = 'update'
+    else
+      redirect_to submissions_path
+    end
+  end
+
+  def update
+    @layer = Layer.find(layer_from_id)
+    return unless @layer.public_submission
+
+    if session[:submission_id]&.positive? && session[:submission_id] == submission_from_id
+      @submission = Submission.find(session[:submission_id])
+    else
+      redirect_to submissions_new_path
+    end
+
+    @submission.status = SUBMISSION_STATUS_STEP1
+    @map = @layer.map
+    @action = 'update'
+    respond_to do |format|
+      if @submission.update(submission_params)
+        session[:submission_id] = @submission.id
+        if @submission.place
+          @submission.place.title = @submission.name
+          @submission.place.save!
+          format.html { redirect_to submission_edit_place_path(locale: params[:locale], submission_id: @submission.id, layer_id: layer_from_id, place_id: @submission.place.id), notice: t('activerecord.messages.models.submission.created') }
+        else
+          format.html { redirect_to submission_new_place_path(locale: params[:locale], submission_id: @submission.id, layer_id: layer_from_id), notice: t('activerecord.messages.models.submission.created') }
+        end
+      else
+        format.html { render :edit }
+      end
+    end
+  end
+
   def new_place
-    return unless session[:submission_id].positive?
+    return unless session[:submission_id]&.positive? && session[:submission_id] == submission_from_id
 
     @submission = Submission.find(session[:submission_id])
+
     @layer = Layer.find(layer_from_id)
     @map = @layer.map
 
@@ -73,10 +124,11 @@ class Public::SubmissionsController < ApplicationController
     @place.lat = params[:lat]
     @place.lon = params[:lon]
     @place.layer_id = layer_from_id
+    @action = 'create_place'
   end
 
   def create_place
-    return unless session[:submission_id].positive?
+    return unless session[:submission_id]&.positive? && session[:submission_id] == submission_from_id
 
     @submission = Submission.find(session[:submission_id])
     @place = Place.new(place_params)
@@ -84,6 +136,7 @@ class Public::SubmissionsController < ApplicationController
     @place.title = @submission.name
     @layer = Layer.find(layer_from_id)
     @map = @layer.map
+    @action = 'create_place'
 
     respond_to do |format|
       if @place.save
@@ -97,8 +150,39 @@ class Public::SubmissionsController < ApplicationController
     end
   end
 
+  def edit_place
+    return unless session[:submission_id]&.positive? && session[:submission_id] == submission_from_id
+
+    @submission = Submission.find(session[:submission_id])
+    @layer = Layer.find(layer_from_id)
+    @map = @layer.map
+    @place = @submission.place
+
+    @action = 'update_place'
+  end
+
+  def update_place
+    return unless session[:submission_id]&.positive? && session[:submission_id] == submission_from_id
+
+    @submission = Submission.find(session[:submission_id])
+    @place = @submission.place
+    @layer = Layer.find(layer_from_id)
+    @map = @layer.map
+    @action = 'update_place'
+
+    respond_to do |format|
+      if @place.update(place_params)
+        @submission.status = SUBMISSION_STATUS_STEP2
+        @submission.save!
+        format.html { redirect_to submission_new_image_path(params[:locale], layer_id: layer_from_id), notice: t('activerecord.messages.models.place.created') }
+      else
+        format.html { render :new_place }
+      end
+    end
+  end
+
   def new_image
-    return unless session[:submission_id].positive?
+    return unless session[:submission_id]&.positive? && session[:submission_id] == submission_from_id
 
     @image = Image.new
 
@@ -109,19 +193,20 @@ class Public::SubmissionsController < ApplicationController
   end
 
   def create_image
-    return unless session[:submission_id].positive?
+    return unless session[:submission_id]&.positive? && session[:submission_id] == submission_from_id
 
     @submission = Submission.find(session[:submission_id])
     @image = Image.new(image_params)
     @layer = Layer.find(layer_from_id)
     @map = @layer.map
     @place = @submission.place
+    @image.place = @place
+    @image.place_id = @place.id
     respond_to do |format|
-      if params[:image_upload]
+      if params[:image_input] && params[:image_input] == '1'
         if @image.save
           @submission.status = SUBMISSION_STATUS_STEP3
           @submission.save!
-
           format.html { redirect_to submission_finished_path(params[:locale], submission_id: @submission.id, layer_id: layer_from_id), notice: t('activerecord.messages.models.image.created') }
         else
           format.html { render :new_image }
@@ -130,17 +215,17 @@ class Public::SubmissionsController < ApplicationController
         @submission.status = SUBMISSION_STATUS_STEP3
         @submission.save!
 
-        format.html { redirect_to submission_finished_path(params[:locale], submission_id: @submission.id, layer_id: layer_from_id), notice: t('submission.finished') }
+        format.html { redirect_to submission_finished_path(params[:locale], submission_id: @submission.id, layer_id: layer_from_id), notice: t('activerecord.messages.models.image.created') }
       end
     end
   end
 
   def finished
-    return unless session[:submission_id].positive?
+    return unless session[:submission_id].positive? && session[:submission_id] == submission_from_id
 
     @submission = Submission.find(session[:submission_id])
     @place = @submission.place
-    @image = Image.sorted_by_place(session[:place_id])
+    @image = Image.sorted_by_place(@place.id)
     @layer = Layer.find(layer_from_id)
     @map = @layer.map
   end

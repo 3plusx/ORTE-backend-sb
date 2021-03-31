@@ -1,7 +1,7 @@
-= simple_form_for [@map,@layer, @submission], :url => '/' + params[:locale] + '/submissions?layer_id=' + @layer.id.to_s do |f|
-  = f.input :layer_id, :as => :hidden, :input_html => { :value => @layer.id }
+= simple_form_for [@map,@layer, @submission], :url => {:action => @action, :controller => 'public/submissions'} do |f|
+  = f.input :layer_id, :as => :hidden, :input_html => { :value => @layer.id, :name => 'layer_id' }
   = f.input :locale, :as => :hidden, :input_html => { :value => params[:locale] }
-  = render 'form_head'
+  = render partial: 'form_head', locals: { :menu_index => 0 }
   = render partial: 'form_menu', locals: { :menu_index => 0 }
   .grid-x.grid-padding-x
     .large-6.medium-12.cell
@@ -37,7 +37,7 @@
 
   %hr
   .grid-x
-    .large-12.medium-12.small-12.cell
+    .large-11.medium-12.small-12.cell
       .form-actions.text-right
         = f.button :submit, t('simple_form.labels.button_step1'), :class => "button"
 

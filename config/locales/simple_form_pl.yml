@@ -11,7 +11,7 @@ pl:
     preview:
       intro: Podgląd wpisu
     form_intro:
-      title: Obchody 76. rocznicy wyzwolenia Stalagu X B Sandbostel
+      title: Obchody <nobr>76. rocznicy</nobr> wyzwolenia <nobr>Stalagu X B Sandbostel</nobr>
       text: |-
         Także i w tym roku, 29 kwietnia, nie możemy w Sandbostel wspólnie upamiętnić wyzwolenie Stalagu X B i wspomnieć tych, którzy tu cierpieli i tu zginęli. Po raz kolejny będziemy upamiętniać to wydarzenie w formie cyfrowej. Z tej okazji zostanie powstanie film, w którym zabiorą głos politycy i dyplomaci, ocaleni i ich krewni, a także młode pokolenie. Miejsce Pamięci Obozu Sandbostel zainicjowało również projekt upamiętniający, w którym możecie aktywnie uczestniczyć.
         W poniższym formularzu można opisać swoje wspomnienia, przemyślenia związane z Stalagiem X B, przesłać zdjęcie, rysunek albo dokument. Tekst i zdjęcie wraz z Twoją lokalizacją będą od połowy kwietnia opublikowane na interaktywnej mapie świata (<a href="https://www.sandbostel76.de">www.sandbostel76.de</a>).
@@ -19,13 +19,16 @@ pl:
         Czekamy na Twoją wiadomość - dziękujemy!
     form_finished:
       title: Bardzo dziękujemy za udział.
-      subtitle: Od połowy kwietnia, po przeglądzie redakcyjnym wpisy zostaną opublikowany na stronie <a href="https://www.sandbostel76.de">www.sandbostel76.de</a>. Później przesłane wpisy zostaną dodane po zakończeniu przeglądu.
+      subtitle:
+        Od połowy kwietnia, po przeglądzie redakcyjnym wpisy zostaną opublikowany
+        na stronie <a href="https://www.sandbostel76.de">www.sandbostel76.de</a>.
+        Później przesłane wpisy zostaną dodane po zakończeniu przeglądu.
     labels:
       title: Imię i nazwisko (lub organizacja)
       teaser: Twój wpis
       email: adres e-mail
       location: Miejscowość
-      image: Dodaj zdjęcie
+      image: Chcesz dodać zdjęcie?
       image_description: Opis zdjęcia
       rights:
         Udzielam prawa Miejscu Pamięci Obozu Sandbostel do opublikowania mojego
@@ -35,6 +38,8 @@ pl:
         Potwierdzam, że przeczytałem/am i zrozumiałem/am oświadczenie o ochronie
         danych osobowych.
       submit: Wyślij wpis
+      button_step1: Dalej
+      button_step2: Dalej
     hints:
       title: Twoje nazwisko zostanie opublikowane
       teaser: Tekst o maksymalnej długości 500 znaków.
@@ -46,6 +51,7 @@ pl:
         Proszę używać tylko formatów JPEG, GIF lub PNG.  Maksymalna wielkość
         5MB.
       image_description: Opisz zdjęcie w kilku słowach
+      image_switch: Chcesz dodać zdjęcie?
     placeholders:
       title: Podaj imię i nazwisko (lub organizację)
       teaser: Twój wpis
@@ -56,3 +62,7 @@ pl:
       accepted: Zgoda obowiązkowa
       blank: Pozostaje wolne.
       empty: Pozostaje wolne.
+    form_menu:
+      submission: Twoje dane
+      place: Miejscowość/Wpis
+      image: Zdjęcie

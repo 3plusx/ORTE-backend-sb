@@ -37,7 +37,7 @@ Rails.application.configure do
 
   config.action_controller.default_url_options = { host: Rails.application.credentials.dig(:deploy, :staging, :server), :protocol => Settings.app_host_protocol }
 
-  config.action_controller.asset_host = Rails.application.credentials.dig(:deploy, :staging, :server)
+  # config.action_controller.asset_host = Rails.application.credentials.dig(:deploy, :staging, :server)
 
   config.action_mailer.default_url_options = { host: Rails.application.credentials.dig(:deploy, :staging, :server), :protocol => Settings.app_host_protocol }
 
@@ -82,7 +82,7 @@ Rails.application.configure do
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
-  config.i18n.fallbacks = true
+  config.i18n.fallbacks = [:en, :de]
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify

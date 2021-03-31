@@ -11,15 +11,16 @@ de:
   layouts:
     navigation:
       sign_out: Abmelden
+      imprint: Impressum
   activerecord:
     messages:
       models:
         submission:
-          created: Eingabe des Beitrags erfolgreich.
+          created: Ihre Daten sind gespeichert (Schritt 1).
         place:
-          created: Eingabe des Standorts erfolgreich.
+          created: Ihre Daten sind gespeichert (Schritt 2).
         image:
-          created: Ihre Abbildung wurde gespeichert
+          created: Ihr Beitrag ist gespeichert.
     errors:
       models:
         submission:
@@ -27,7 +28,7 @@ de:
             name:
               blank: Eingabe des Namen ist erforderlich
             email:
-              taken: Email bereits verwendet
+              taken: E-Mail bereits verwendet
         image:
           attributes:
             title:
@@ -39,3 +40,15 @@ de:
       blank: Pflichtfeld
       present: Dieses Feld bleibt frei
       inclusion: Zustimmung erforderlich
+  search:
+    lookup:
+      intro: 'Wie in Weltkarte eintragen: Mit obigem Feld Adresse suchen durch Hinzufügung
+        des Namens Ihres Heimatortes'
+      address: 'Adresse:'
+      no_input: Keine Eingabe! Bitte vollständige Adresse eingeben (Straße, Hausnummer,
+        Ort)!
+      too_short: Eingabe zu kurz! Bitte vollständige Adresse eingeben (Straße, Hausnummer,
+        Ort)!
+      no_result: Nichts gefunden. Bitte mit anderer Adresse versuchen (Straße, Hausnummer,
+        Ort eingeben)!
+      success_result: Bitte ein Ergebnis unten auswählen (oder andere Adresse eingeben)!

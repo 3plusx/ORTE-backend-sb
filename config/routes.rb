@@ -3,9 +3,20 @@ Rails.application.routes.draw do
   devise_for :users
 
   if Rails.env.production?
-    root :to => 'public/submissions#new', locale: 'de', layer_id: 2, constraints: { host: 'submissions.stiftung-lager-sandbostel.de'  }
+    I18n.available_locales.each_with_index do |locale, i|
+      root :to => 'public/submissions#new', locale: locale.to_s ,layer_id: 51, bogus_id: i, constraints: { host: 'submissions.stiftung-lager-sandbostel.de', query_string: 'locale=' + locale.to_s  }
+    end
+    root :to => 'public/submissions#new', locale: 'de', layer_id: 51, bogus_id:23, constraints: { host: 'submissions.stiftung-lager-sandbostel.de'  }
+  elsif Rails.env.development?
+    I18n.available_locales.each_with_index do |locale, i|
+      root :to => 'public/submissions#new', locale: locale.to_s ,layer_id: 1, bogus_id: i, constraints: { host: 'localhost', port: '3000', query_string: 'locale=' + locale.to_s  }
+    end
+    root :to => 'public/submissions#new', locale: 'de' ,layer_id: 1, bogus_id:23, constraints: { host: 'localhost', port: '3000'  }
   else
-    root :to => 'public/submissions#new', locale: 'de', layer_id: 2, constraints: { host: 'submissions-staging.stiftung-lager-sandbostel.de'  }
+    I18n.available_locales.each_with_index do |locale, i|
+      root :to => 'public/submissions#new', locale: locale.to_s ,layer_id: 2, bogus_id: i, constraints: { host: 'submissions-staging.stiftung-lager-sandbostel.de', query_string: 'locale=' + locale.to_s  }
+    end
+    root :to => 'public/submissions#new', locale: 'de', layer_id: 2, bogus_id:23, constraints: { host: 'submissions-staging.stiftung-lager-sandbostel.de'  }
   end
 
   root 'start#index'
@@ -52,14 +63,22 @@ Rails.application.routes.draw do
   end
 
   scope "/:locale" do
-    resources :submissions, :controller => "public/submissions" do
-      get :new, :controller => "public/submissions", :action => 'new'
-      post :create, :controller => "public/submissions", :action => 'create'
-      get :new_place, :controller => "public/submissions", :action => 'new_place'
-      post :create_place, :controller => "public/submissions", :action => 'create_place'
-      get :new_image, :controller => "public/submissions", :action => 'new_image'
-      post :create_image, :controller => "public/submissions", :action => 'create_image'
-      get :finished, :controller => "public/submissions", :action => 'finished'
+    scope "/:layer_id" do
+      resources :submissions, :controller => "public/submissions" do
+        get :new, :controller => "public/submissions", :action => 'new'
+        post :create, :controller => "public/submissions", :action => 'create'    
+        get :edit, :controller => "public/submissions", :action => 'edit'
+        patch :update, :controller => "public/submissions", :action => 'update'
+        get :new_place, :controller => "public/submissions", :action => 'new_place'
+        post :create_place, :controller => "public/submissions", :action => 'create_place'
+        scope "/:place_id" do
+          get :edit_place, :controller => "public/submissions", :action => 'edit_place'
+          patch :update_place, :controller => "public/submissions", :action => 'update_place'
+          get :new_image, :controller => "public/submissions", :action => 'new_image'
+          post :create_image, :controller => "public/submissions", :action => 'create_image'
+          get :finished, :controller => "public/submissions", :action => 'finished'
+        end
+      end
     end
   end
 

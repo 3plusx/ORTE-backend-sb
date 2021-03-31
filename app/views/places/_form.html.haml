@@ -147,6 +147,11 @@
                     #{sub.email} 
                 %tr
                   %td
+                    Sprache: 
+                  %td  
+                    = t('languages.' + sub.locale.to_s)
+                %tr
+                  %td
                     Erstellt: 
                   %td  
                     #{sub.created_at} 
@@ -155,9 +160,7 @@
                     Status: 
                   %td
                     - case sub.status
-                    - when 1  
-                      %i.fi.fi-x
-                      #{sub.status} 
+                    - when 1 
                     - when 2  
                       %i.fi.fi-x
                       #{sub.status}   

@@ -1,13 +1,12 @@
-= simple_form_for [@map, @submission, @place], :method => 'POST',:url => '/' + params[:locale] + '/submissions/'+@submission.id.to_s+'/create_place?layer_id='+ @layer.id.to_s do |f|
+= simple_form_for [@map, @submission, @place], :url => {:action => @action} do |f|
   = f.input :layer_id, :as => :hidden, :input_html => { :value => @layer.id }
-  = f.input :locale,  :as => :hidden, :input_html => { :value => params[:locale],:id => "locale" }
+  = f.input :locale, :as => :hidden, :input_html => { :value => params[:locale],:id => "locale" }
 
   = f.input :lat, :as => :hidden, :input_html => { :value => @place.lat }
   = f.input :lon, :as => :hidden, :input_html => { :value => @place.lon }
   = f.input :zip, :as => :hidden, :input_html => { :value => @place.zip }
   = f.input :city, :as => :hidden, :input_html => { :value => @place.city }
-
-  = render 'form_head'
+  = render partial: 'form_head', locals: { :menu_index => 1 }
   = render partial: 'form_menu', locals: { :menu_index => 1 }
   .grid-x.grid-padding-x
     .large-6.medium-12.cell
@@ -43,7 +42,69 @@
       .grid-x.grid-padding-x
         .large-8.large-offset-2.medium-12.cell
           .form-inputs
+            
             = f.input :teaser, :label => t('simple_form.labels.teaser'), :as => 'text', :input_html => {:rows => 8, class: 'large-text tinymce', :placeholder => t('simple_form.placeholders.teaser') }
+            = #tinymce :onchange_callback => "submission_tinymce_preview"
+            :javascript
+              $(document).ready(function(){
+                tinymce.PluginManager.add('maxchars', function(editor) {
+
+                  //set a default value for the maxChars peroperty
+                  editor.maxChars = editor.maxChars || 500;
+                
+                  var label = $('#place_teaser_counter');
+                
+                  function init() {
+                    updateStyle(); //check if the initial content is valid
+                  };
+                
+                  function updateMsg(show, char_length) {
+                    if (!label) {
+                      return;
+                    }
+                    var msg = char_length + '/' + editor.maxChars;
+                    label.text(msg);
+                  }
+                
+                  function updateStyle() {
+                    var content = editor.getContent({
+                      format: 'text'
+                    });
+                    var $body = editor.$('.mce-content-body');
+                    
+                    if (content.length > editor.maxChars) {
+                      label.addClass("warning");
+                      updateMsg(true,content.length);
+                
+                    } else {
+                      label.removeClass("warning");
+                      updateMsg(false,content.length);
+                    }
+                
+                  };
+                  editor.on('init', init);
+                  editor.on("change keyUp", updateStyle);
+                });
+                tinyMCE.init({
+                  selector: '#place_teaser',
+                  toolbar: 'bold italic bullist | link | undo redo | fullscreen',
+                  branding: false,
+                  menubar: false,
+                  statusbar: false,
+                  plugins: "link, lists, fullscreen, maxchars",
+                  setup:  function(editor) {
+                    editor.on('keyup', function(e) {
+                      $('#place_teaser_receiver').html(editor.getContent());
+                    });
+                    editor.on('ExecCommand', function(e) {
+                      if(e.command == 'mceToggleFormat' || e.command == 'mceInsertLink') {
+                        $('#place_teaser_receiver').html(editor.getContent());
+                      }
+                    });
+                  }
+                  
+                });
+              });  
             %p.hint
               = t('simple_form.labels.teaser')
               (max. 500)
