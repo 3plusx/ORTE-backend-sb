@@ -4,8 +4,12 @@
   = render partial: 'form_head', locals: { :menu_index => 2 }
   = render partial: 'form_menu', locals: { :menu_index => 2 }
   .grid-x
-    .large-12.cell
+    .large-8.large-offset-2.medium-12.cell
       = f.error_notification
+      - if @image.errors.messages.present?
+        %ul.hide
+          = @image.errors.messages.each do |item,msg|
+            %li= item
 
 
   .grid-x.grid-padding-x

@@ -89,6 +89,19 @@ body#submissions {
     #place_teaser_counter.warning {
       color: #c00;
     }
+
+    div.alert-box,
+    small.error {
+      color: #c00;
+      border: 2px solid #c00;
+      padding: 7px;
+      display: inline-block;
+      margin-top: 5px;
+    }
+
+    div.alert-box {
+      margin-bottom: 1rem;
+    }
     .response-list {
       position: absolute;
       background-color: white;

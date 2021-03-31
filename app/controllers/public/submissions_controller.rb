@@ -50,6 +50,7 @@ class Public::SubmissionsController < ApplicationController
     return unless @layer.public_submission
 
     @map = @layer.map
+    @action = 'create'
 
     respond_to do |format|
       if @submission.save
@@ -90,7 +91,7 @@ class Public::SubmissionsController < ApplicationController
 
     @submission.status = SUBMISSION_STATUS_STEP1
     @map = @layer.map
-
+    @action = 'update'
     respond_to do |format|
       if @submission.update(submission_params)
         session[:submission_id] = @submission.id
@@ -135,6 +136,7 @@ class Public::SubmissionsController < ApplicationController
     @place.title = @submission.name
     @layer = Layer.find(layer_from_id)
     @map = @layer.map
+    @action = 'create_place'
 
     respond_to do |format|
       if @place.save
@@ -166,6 +168,7 @@ class Public::SubmissionsController < ApplicationController
     @place = @submission.place
     @layer = Layer.find(layer_from_id)
     @map = @layer.map
+    @action = 'update_place'
 
     respond_to do |format|
       if @place.update(place_params)
