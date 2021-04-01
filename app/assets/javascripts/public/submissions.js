@@ -55,7 +55,6 @@
       if( $('#place_address').length > 0 ){
 
         $('input#place_address').on('keyup', function(e) {
-            console.log('change', $(this).val())
             e.preventDefault();
             LookupCity($(this).val());
         });
@@ -85,8 +84,6 @@
     console.log("---------------------");
     console.log("LookupNominatim");
     console.log("Checking for params...");
-    //var url = PrepareBeforeLookup(url);
-    var url = '';
     if ( address === '' ) {
       $('#selection-hint').html("<p>" + I18n.t('search.lookup.no_input') +  "</p>");
       $('#selection-hint').addClass('active');
@@ -119,12 +116,10 @@
           $('.response-list').remove();
           $.each( data, function( key, val ) {
             console.log('Lookup:: Data value class ' + val.class);
-            var regexp = /amenity|building|highway|boundary/gi;
             var label = ''
             if ( val.class === 'building') {
               label = I18n.t('search.lookup.address');
             }
-            var href = url+'?address='+val.display_name+'&lat='+val.lat+'&lon='+val.lon;
 
             // OR better get address details
             /*
@@ -161,15 +156,9 @@
               } else {
                 city = val.address.state
               }
-              // TODO verify all values
-              // FIXME hamburg as state
-              href = url+'?'+location+address+postcode+"&city="+city+'&lat='+val.lat+'&lon='+val.lon;
             }
-
-
-            
-              console.log('Lookup:: Using entry');
-              items.push( "<li id='" + key + "' class='nominatim_results' ><a href='return false;' data-zip='"+ postcode + "' data-city='"+ city + "' data-lat='"+ val.lat + "' data-lon='"+ val.lon + "' data-location='"+ label + " " + val.display_name + "'>" + label + " " + val.display_name + "</a></li>" );
+            console.log('Lookup:: Using entry');
+            items.push( "<li id='" + key + "' class='nominatim_results' ><a href='return false;' data-zip='"+ postcode + "' data-city='"+ city + "' data-lat='"+ val.lat + "' data-lon='"+ val.lon + "' data-location='"+ label + " " + val.display_name + "'>" + label + " " + val.display_name + "</a></li>" );
             
           });
           $( "<ul/>", {
