@@ -179,6 +179,7 @@
             = f.input :zip
           .small-8.cell
             = f.input :city
+        = f.input :country, :input_html => {:placeholder => 'Land' }    
         = f.input :link, :label => 'Weblink', :placeholder => 'https://'
         %p.hint Does this place (or location) has a website?
         %hr
