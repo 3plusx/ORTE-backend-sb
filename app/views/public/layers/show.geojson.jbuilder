@@ -17,6 +17,7 @@ if @layer && @layer.published
       json.address place.address
       json.city place.city
       json.country place.country
+      json.teaser place.teaser
       json.text place.text
       json.link place.link
       json.images do
