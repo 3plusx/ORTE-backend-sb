@@ -156,9 +156,10 @@
               } else {
                 city = val.address.state
               }
+              country = val.address.country
             }
             console.log('Lookup:: Using entry');
-            items.push( "<li id='" + key + "' class='nominatim_results' ><a href='return false;' data-zip='"+ postcode + "' data-city='"+ city + "' data-lat='"+ val.lat + "' data-lon='"+ val.lon + "' data-location='"+ label + " " + val.display_name + "'>" + label + " " + val.display_name + "</a></li>" );
+            items.push( "<li id='" + key + "' class='nominatim_results' ><a href='return false;' data-zip='"+ postcode + "' data-city='"+ city + "' data-country='"+ country + "' data-lat='"+ val.lat + "' data-lon='"+ val.lon + "' data-location='"+ label + " " + val.display_name + "'>" + label + " " + val.display_name + "</a></li>" );
             
           });
           $( "<ul/>", {
@@ -181,6 +182,7 @@
             $('#place_lon').val($(this).data('lon'));
             $('#place_zip').val($(this).data('zip'));
             $('#place_city').val($(this).data('city'));
+            $('#place_country').val($(this).data('country'));
             $('#place_location').val($(this).data('location'));
             $('#place_address').val($(this).data('location'));
             $('#place_address_receiver').text($(this).data('location'));

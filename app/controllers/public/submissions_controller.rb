@@ -121,6 +121,7 @@ class Public::SubmissionsController < ApplicationController
     @place.address = params[:address]
     @place.zip = params[:zip]
     @place.city = params[:city]
+    @place.country = params[:country]
     @place.lat = params[:lat]
     @place.lon = params[:lon]
     @place.layer_id = layer_from_id
