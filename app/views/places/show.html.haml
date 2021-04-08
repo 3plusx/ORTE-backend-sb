@@ -16,7 +16,9 @@
       .cell.small-4.medium-4
         %div
           - images.each do |img|
-            - if img.attached?
+            - filename = ActiveStorage::Blob.service.path_for(img.key)
+            - if img.attached? && File.exist?(filename)
+
               - if img.preview.present?
                 %p{"data-open": "reveal#{img.id}"}
                   = image_tag img.file.variant(resize: "300x300").processed
@@ -25,7 +27,8 @@
                   = image_tag img.file.variant(resize: "300x300").processed
       - images.each do |img|
         .reveal{id: "reveal#{img.id}", "data-reveal": true, "data-animation-in": "fade-in", "data-animation-out": "fade-out"}
-          - if img.file.attached?
+          - filename = ActiveStorage::Blob.service.path_for(img.key)
+          - if img.file.attached? && File.exist?(filename)
             = image_tag img.file.variant(resize: "800x800").processed
             %button.close-button{"data-close": true, "aria-label": "Close", type: "button"}
               %i.fi.fi-x{"aria-hidden": true}
