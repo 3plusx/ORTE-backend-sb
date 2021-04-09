@@ -13,6 +13,7 @@ if @layer && @layer.published
       json.coordinates [place.lon, place.lat]
     end
     json.properties do
+      json.id place.id
       json.name place.title
       json.address place.address
       json.city place.city
