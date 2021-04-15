@@ -233,6 +233,8 @@ class Public::SubmissionsController < ApplicationController
 
   def layer_from_id
     params[:layer_id].to_i
+    # ? direct call via http://127.0.0.1:3000/de/public/submissions/new?layer_id=1 doesn't work anymore
+    # 1
   end
 
   def place_from_id
